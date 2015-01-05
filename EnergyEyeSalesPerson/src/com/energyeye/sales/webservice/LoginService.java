@@ -17,11 +17,13 @@ import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONException;
 import org.json.JSONObject;
 import com.energyeye.sales.properties.Constants;
+import com.energyeye.sales.properties.SalesPerson;
+
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.util.Log;
-import android.widget.Toast;
+
 
 
 
@@ -30,56 +32,21 @@ import android.widget.Toast;
 public class LoginService {
 
 	private static InputStream is = null;
-	private String emailId, password;
+	private Context context;
+	private static SalesPerson user;
+	
 
 
 
 	public LoginService(Context context) {
 		this.context = context;
 	}
-
 	
-
-
-	public String getEmailId() {
-		return this.emailId;
-	}
-
-
-
-	public void setEmailId(String emailId) {
-		this.emailId = emailId;
-	}
-
-
-
-	public String getPassword() {
-		return this.password;
-	}
-
-
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
-
-
-
-	public int getRole() {
-		return this.role;
-	}
-
-
-
-	public void setRole(int role) {
-		this.role = role;
-	}
-
-
-
+	
 	public Context getContext() {
-		return this.context;
+		return context;
 	}
+
 
 
 
@@ -88,18 +55,15 @@ public class LoginService {
 	}
 
 
-
-	private int role;
-	private Context context;
-
-
-
 	
+
+
 	public void doLogin() {
-	
-
-		//new Loginwebservice().execute("login");
-		
+		Log.e("login Service", "ndfsdf");
+		user = SalesPerson.getUser();
+		user.getEmailId();
+		user.getPassword();
+		new Loginwebservice().execute("login");		
 		postLogin();
 		
 	}
@@ -108,16 +72,12 @@ public class LoginService {
 
 	public void postLogin() {
 
-		if(getEmailId().equalsIgnoreCase("nikhil@gmail.com"))
-		{
-		Toast.makeText(getContext(), "Sucessful", Toast.LENGTH_LONG).show();
+		
 		context.startActivity(new Intent(context,com.energyeye.salesperson.PostLoginActivity.class))		;
-		}
-		else
-		Toast.makeText(getContext(), "Failed", Toast.LENGTH_LONG).show();
+		
 		
 	}
-	@SuppressWarnings("unused")
+	
 	private class Loginwebservice extends AsyncTask<String, Integer, String> {
 
 		@Override
@@ -132,9 +92,9 @@ public class LoginService {
 
 					if (Integer.parseInt(json_data.getString("status")) == 200) {
 						 loginStatus = 200;
-						setEmailId(json_data.getString("emailId"));
-						setPassword(json_data.getString("password"));
-						setRole(Integer.parseInt(json_data.getString("role")));
+						user.setUserKey(json_data.getString("userKey"));
+						
+						
 					}
 					else
 						loginStatus = Integer.parseInt(json_data.getString("status"));
@@ -145,11 +105,10 @@ public class LoginService {
 				e.printStackTrace();
 			}
 			 if (loginStatus == 200) {
-				    Log.e("parsing", getEmailId() + getPassword() + getRole());
-				   // postLogin();
+				    Log.e("Login Sucessful", user.getUserKey());
+				    postLogin();
 				   }else{
-					   if (loginStatus == 500) 
-						   Log.e("RegisterError",Constants.EMAIL_ID_PASSWORD_INVALID);		 
+					   	   Log.e("Login error",Constants.EMAIL_ID_PASSWORD_INVALID);		 
 				   }
 		}
 
@@ -159,19 +118,15 @@ public class LoginService {
 			String json = "";
 			List<BasicNameValuePair> params1 = new ArrayList<BasicNameValuePair>();
 			// params.add(new BasicNameValuePair("tag", login_tag));
-			params1.add(new BasicNameValuePair("emailId", getEmailId()));
-			params1.add(new BasicNameValuePair("password", getPassword()));
+			params1.add(new BasicNameValuePair("emailId", user.getEmailId()));
+			params1.add(new BasicNameValuePair("password", user.getPassword()));
 
 			try {
 				// defaultHttpClient
 				HttpPost httpPost = null;
-
-				DefaultHttpClient httpClient = new DefaultHttpClient();
-				
-					httpPost = new HttpPost(Constants.LOGIN_URL);
-				
+				DefaultHttpClient httpClient = new DefaultHttpClient();				
+				httpPost = new HttpPost(Constants.LOGIN_URL);				
 				httpPost.setEntity(new UrlEncodedFormEntity(params1));
-
 				HttpResponse httpResponse = httpClient.execute(httpPost);
 				HttpEntity httpEntity = httpResponse.getEntity();
 				is = httpEntity.getContent();

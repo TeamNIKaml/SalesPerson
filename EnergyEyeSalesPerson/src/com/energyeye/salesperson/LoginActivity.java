@@ -1,9 +1,11 @@
 package com.energyeye.salesperson;
 
+import com.energyeye.sales.properties.SalesPerson;
 import com.energyeye.sales.webservice.LoginService;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -17,6 +19,7 @@ public class LoginActivity  extends Activity {
 	private EditText email,password;
 	private Button login;
 	private LoginService loginService;
+	private static SalesPerson user;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -40,9 +43,11 @@ public class LoginActivity  extends Activity {
 					 	if(!(password.getText().toString().length()>0))
 					 		Toast.makeText(getApplicationContext(),"Password cannot be null",Toast.LENGTH_SHORT).show();					 
 			           // Toast.makeText(getApplicationContext(),"valid email address",Toast.LENGTH_SHORT).show();
-			            
-			            loginService.setEmailId(email.getText().toString());
-						loginService.setPassword(password.getText().toString());
+					 	Log.e("Login Activity", "dfsdfs");
+			            user = SalesPerson.getUser();
+			            user.setEmailId(email.getText().toString());
+			            user.setPassword(password.getText().toString());
+			           
 						loginService.doLogin();
 			        }
 			        else
