@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="loginBackground">#F1F1F1</color>
+     <color name="loginButton">#FF9916</color>
+     <color name="EditTextBackGround">#EEEEEE</color>
+     <color name="EditTextFont">#EEEEEE</color>
+      <color name="ProjectDescription">#FFF3F3</color>
+        <color name="NextOppertunities">#688915</color>
+</resources>
