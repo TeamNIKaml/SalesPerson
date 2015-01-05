@@ -3,8 +3,26 @@ package com.energyeye.salesperson.properties;
 public class Constants {
 	
 	public static final String EMAIL_ID_PASSWORD_INVALID = "Invalid Username or Password";
-	public static String LOGIN_URL = "http://10.0.2.2:8080/EnergyEye/Service/LoginService.php";
-	
-	
+	public static final String LOGIN_URL = "http://10.0.2.2:8080/EnergyEye/Service/LoginService.php";
+	public static final String OPPERTUNITIES_DB_NAME ="oppertunities";
+	public static final String OPPERTUNITIES_DB_QUERY ="CREATE TABLE"+Constants.OPPERTUNITIES_DB_NAME+ "(" +
+			"_id INTEGER PRIMARY KEY AUTOINCREMENT  NOT NULL, " +
+			"projectTitle TEXT " +
+			"projectDescription TEXT" +
+			"propertyType TEXT" +
+			"moduleType TEXT" +
+			"compCode TEXT" +
+			"contactName TEXT" +
+			"designation TEXT " +
+			"address2 TEXT" +
+			"city TEXT" +
+			"county TEXT" +
+			"country TEXT" +
+			"postCode TEXT" +
+			"emailId TEXT" +
+			"dayPhone TEXT" +
+			"eveningPhone TEXT" +
+			"other TEXT)";	
+	private Constants()	{}	
 
 }
