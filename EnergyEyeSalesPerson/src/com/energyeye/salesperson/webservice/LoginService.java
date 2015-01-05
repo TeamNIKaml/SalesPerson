@@ -1,4 +1,4 @@
-package com.energyeye.sales.webservice;
+package com.energyeye.salesperson.webservice;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -16,11 +16,15 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONException;
 import org.json.JSONObject;
-import com.energyeye.sales.properties.Constants;
-import com.energyeye.sales.properties.SalesPerson;
+
+import com.energyeye.salesperson.LoginActivity;
+import com.energyeye.salesperson.properties.Constants;
+import com.energyeye.salesperson.properties.SalesPerson;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.os.AsyncTask;
 import android.util.Log;
 
@@ -34,9 +38,10 @@ public class LoginService {
 	private static InputStream is = null;
 	private Context context;
 	private static SalesPerson user;
+	private SharedPreferences pref;
+	private Editor editor;
+
 	
-
-
 
 	public LoginService(Context context) {
 		this.context = context;
@@ -55,14 +60,10 @@ public class LoginService {
 	}
 
 
-	
-
-
 	public void doLogin() {
 		Log.e("login Service", "ndfsdf");
 		user = SalesPerson.getUser();
-		user.getEmailId();
-		user.getPassword();
+		
 		new Loginwebservice().execute("login");		
 		postLogin();
 		
@@ -71,14 +72,40 @@ public class LoginService {
 	
 
 	public void postLogin() {
-
 		
-		context.startActivity(new Intent(context,com.energyeye.salesperson.PostLoginActivity.class))		;
+		
+		writeSharedPreference();
+		Intent intent = new Intent(context, com.energyeye.salesperson.PostLoginActivity.class);
+		//intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);	
+		intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+		context.startActivity(intent);		
+		
 		
 		
 	}
 	
+	private void writeSharedPreference() {
+		// TODO Auto-generated method stub
+		
+		pref = getContext().getSharedPreferences("localdiskchildlocator", 0);
+		editor = pref.edit();
+		Log.e("writeToSharedPreferences", "localdiskchildlocator");
+		editor.putString("userKey", user.getUserKey());
+		editor.putString("emailID", user.getEmailId());
+		editor.putString("password", user.getPassword());
+		editor.putInt("loginstatus", 100);		
+		editor.commit();	
+		
+	}
+
 	private class Loginwebservice extends AsyncTask<String, Integer, String> {
+
+		@Override
+		protected void onProgressUpdate(Integer... values) {
+			LoginActivity.progressBarStatus = values[0];
+			// TODO Auto-generated method stub
+			super.onProgressUpdate(values);
+		}
 
 		@Override
 		protected void onPostExecute(String result) {
@@ -114,15 +141,14 @@ public class LoginService {
 
 		@Override
 		protected String doInBackground(String... params) {
-			// TODO Auto-generated method stub
+			
 			String json = "";
 			List<BasicNameValuePair> params1 = new ArrayList<BasicNameValuePair>();
-			// params.add(new BasicNameValuePair("tag", login_tag));
 			params1.add(new BasicNameValuePair("emailId", user.getEmailId()));
 			params1.add(new BasicNameValuePair("password", user.getPassword()));
 
 			try {
-				// defaultHttpClient
+				
 				HttpPost httpPost = null;
 				DefaultHttpClient httpClient = new DefaultHttpClient();				
 				httpPost = new HttpPost(Constants.LOGIN_URL);				

@@ -1,4 +1,4 @@
-package com.energyeye.sales.properties;
+package com.energyeye.salesperson.properties;
 
 import android.util.Log;
 
@@ -6,6 +6,9 @@ public class SalesPerson {
 	
 	private String emailId, password,userKey;
 	private static SalesPerson user = null;
+	
+	
+	
 	
 	private SalesPerson()
 	{

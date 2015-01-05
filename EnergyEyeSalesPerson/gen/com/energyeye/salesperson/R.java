@@ -59,7 +59,8 @@ public final class R {
         public static final int linearLayout5=0x7f09000f;
         public static final int linearLayout6=0x7f090013;
         public static final int listitem1=0x7f090020;
-        public static final int login=0x7f090018;
+        public static final int loginButton=0x7f090018;
+        public static final int logout=0x7f090026;
         public static final int myOppertunities=0x7f09001e;
         public static final int myTask=0x7f090023;
         public static final int nextOpportunities=0x7f090017;
@@ -88,6 +89,7 @@ public final class R {
     }
     public static final class menu {
         public static final int main=0x7f080000;
+        public static final int postlogin=0x7f080001;
     }
     public static final class string {
         public static final int action_settings=0x7f060002;
@@ -107,6 +109,7 @@ public final class R {
         public static final int hello_world=0x7f060001;
         public static final int list=0x7f06000c;
         public static final int login=0x7f060003;
+        public static final int logout=0x7f06001d;
         public static final int next=0x7f06001c;
         public static final int oppertunites=0x7f060009;
         public static final int other=0x7f06001b;

@@ -1,4 +1,4 @@
-package com.energyeye.sales.properties;
+package com.energyeye.salesperson.properties;
 
 public class Constants {
 	

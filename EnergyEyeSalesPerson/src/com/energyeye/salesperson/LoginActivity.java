@@ -1,39 +1,43 @@
 package com.energyeye.salesperson;
 
-import com.energyeye.sales.properties.SalesPerson;
-import com.energyeye.sales.webservice.LoginService;
+import com.energyeye.salesperson.properties.SalesPerson;
+import com.energyeye.salesperson.webservice.LoginService;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 public class LoginActivity  extends Activity {
 	
 	private EditText email,password;
-	private Button login;
+	private Button loginButton;
 	private LoginService loginService;
 	private static SalesPerson user;
+	private SharedPreferences pref;
+	private ProgressDialog  loginProgressBar;
+	public static int progressBarStatus = 0;
+	private Handler handler = new Handler();
+
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_login);
-		email =(EditText)findViewById(R.id.email);
-		password=(EditText)findViewById(R.id.password);
-		login =(Button)findViewById(R.id.login);
-		loginService = new LoginService(this);
-		
-		
-		
-			
-		login.setOnClickListener(new OnClickListener() {
+		Log.e("onCreate", "chekLogin");
+		checkLoginStatus();				
+		init();			
+		loginButton.setOnClickListener(new OnClickListener() 
+		{
 			String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
 			@Override
 			public void onClick(View arg0) {
@@ -42,13 +46,17 @@ public class LoginActivity  extends Activity {
 			        { 
 					 	if(!(password.getText().toString().length()>0))
 					 		Toast.makeText(getApplicationContext(),"Password cannot be null",Toast.LENGTH_SHORT).show();					 
-			           // Toast.makeText(getApplicationContext(),"valid email address",Toast.LENGTH_SHORT).show();
+			          	 loginProgressBar.show();
+					 	 handler.post(new Runnable() {
+							    public void run() {
+							    	loginProgressBar.setProgress(progressBarStatus);				      
+							    }
+							        });					 	
 					 	Log.e("Login Activity", "dfsdfs");
 			            user = SalesPerson.getUser();
 			            user.setEmailId(email.getText().toString());
-			            user.setPassword(password.getText().toString());
-			           
-						loginService.doLogin();
+			            user.setPassword(password.getText().toString());			              
+			         	loginService.doLogin();					 
 			        }
 			        else
 			        {
@@ -57,25 +65,91 @@ public class LoginActivity  extends Activity {
 			           
 			        }
 				
-				
-				
-				// TODO Auto-generated method stub
-				
+			
 			}
 		});
-	}
+		}
+				
+			
+			
+	
 
 	
 
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		// Handle action bar item clicks here. The action bar will
-		// automatically handle clicks on the Home/Up button, so long
-		// as you specify a parent activity in AndroidManifest.xml.
-		int id = item.getItemId();
-		if (id == R.id.action_settings) {
-			return true;
-		}
-		return super.onOptionsItemSelected(item);
+	private void init() {
+		// TODO Auto-generated method stub
+		email =(EditText)findViewById(R.id.email);
+		password=(EditText)findViewById(R.id.password);
+		loginButton =(Button)findViewById(R.id.loginButton);
+		loginService = new LoginService(this);
+		 loginProgressBar = new ProgressDialog(LoginActivity.this);
+         loginProgressBar.setTitle("Loging in||");
+         loginProgressBar.setMessage("Please Wait!!");
+         loginProgressBar.setCancelable(true);
+         loginProgressBar.setProgressStyle(ProgressDialog.STYLE_SPINNER);
 	}
+
+
+
+	@Override
+	protected void onRestart() {
+		// TODO Auto-generated method stub
+		super.onRestart();
+		Log.e("onRestart", "chekLogin");
+		checkLoginStatus();
+	}
+
+
+
+	@Override
+	protected void onResume() {
+		// TODO Auto-generated method stub
+		super.onResume();
+		 email.setText("");
+         password.setText("");   
+		checkLoginStatus();
+	}
+
+
+
+	@Override
+	protected void onStart() {
+		// TODO Auto-generated method stub
+		super.onStart();
+		Log.e("onStart", "chekLogin");
+		//checkLoginStatus();
+	}
+
+
+
+	@Override
+	protected void onStop() {
+		// TODO Auto-generated method stub
+		super.onStop();
+	}
+	
+	private void checkLoginStatus() {
+
+		pref = getApplicationContext().getSharedPreferences(
+				"localdiskchildlocator", 0);
+		int statusTemp = pref.getInt("loginstatus", 0);
+		
+		Log.e("checkLoginStatus","LoginStatus: "+String.valueOf(statusTemp)
+				+"\nuserKey: "+pref.getString("userKey", "")
+				+"\nemailID: "+pref.getString("emailID", "")
+				+"\nPassword: "+pref.getString("password", ""));
+		
+		if (statusTemp == 100) {
+
+			Intent intent = new Intent(getApplicationContext(),
+			PostLoginActivity.class);
+			intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+			startActivity(intent);
+			
+		}
+	}
+
+
+
+	
 }
