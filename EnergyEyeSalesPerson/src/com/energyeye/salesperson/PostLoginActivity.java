@@ -29,7 +29,7 @@ public class PostLoginActivity extends TabActivity  {
 		
 		pref = getApplicationContext().getSharedPreferences(
 				"localdiskchildlocator", 0);
-		editor = pref.edit();
+		
 		
 		
 		TabHost tabHost = (TabHost)findViewById(android.R.id.tabhost);
@@ -81,6 +81,7 @@ public class PostLoginActivity extends TabActivity  {
 	public boolean onOptionsItemSelected(MenuItem item) {
 		// TODO Auto-generated method stub
 		Log.e("Logoutdszfs","Logoutfcsdafs");
+		editor = pref.edit();
 		editor.putInt("loginstatus", 5);
 		editor.putString("userKey","");
 		editor.putString("emailID", "");

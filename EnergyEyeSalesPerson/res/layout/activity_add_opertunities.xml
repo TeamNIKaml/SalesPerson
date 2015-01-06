@@ -42,24 +42,28 @@
        android:layout_below="@+id/description"
        android:orientation="horizontal"
        android:weightSum="3" >
-
-       <Spinner
-           android:id="@+id/spinner1"
+       <Spinner 
+            android:id="@+id/propertyspinner"
            android:layout_width="fill_parent"
            android:layout_height="wrap_content"
-           android:layout_weight="1" />
-
-       <Spinner
-           android:id="@+id/spinner2"
+           android:layout_weight="1"
+                    
+           />
+        <Spinner 
+            android:id="@+id/modulespinner"
            android:layout_width="fill_parent"
            android:layout_height="wrap_content"
-           android:layout_weight="1" />
-       
-        <Spinner
-           android:id="@+id/spinner3"
+           android:layout_weight="1"
+          
+           />
+         <Spinner 
+            android:id="@+id/countryspinner"
            android:layout_width="fill_parent"
            android:layout_height="wrap_content"
-           android:layout_weight="1" />
+           android:layout_weight="1"
+          
+           />
+     
        
        
    </LinearLayout>
@@ -221,7 +225,7 @@
        android:weightSum="2" >
 
     <EditText
-        android:id="@+id/eamil"
+        android:id="@+id/emailOppertunities"
         android:inputType="textEmailAddress"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

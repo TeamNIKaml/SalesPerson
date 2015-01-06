@@ -1,13 +1,41 @@
 package com.energyeye.salesperson.properties;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.energyeye.salesperson.SQLLite.DBHelper;
 
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 public class OppertunitiesDataSource {
+
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		
+		return  "\n\n\n projectTitle : " +getProjectTitle() +"\n"+
+				"projectDescription : " + getProjectDescription() + "\n" +
+				"propertyType : " + getPropertyType() +"\n" +
+				"moduleType : " +getModuleType() + " \n" +
+				"compCode : "+getCompCode() + "\n" +
+				"contactName : " + getContactName() + "\n" +
+				"designation : " + getDesignation() + "\n" +
+				"address1 : " + getAddress1() + "\n" +
+				"address2 : " +getAddress2() + "\n" + 
+				"city : " +getCity() + "\n" +
+				"county" + getCounty() + "\n" +
+				"postCode : " +getPostCode() +"\n" +
+				"emailId : " + getEmailId() + "\n" +
+				"dayPhone : "  +getDayPhone() +"\n" +
+				"eveningPhone : " +getEveningPhone() + "\n" +
+				"other : " + getOther() ;
+		
+		
+	}
 
 	private String projectTitle;
 	private String projectDescription;
@@ -204,29 +232,53 @@ public class OppertunitiesDataSource {
 	
 	public void insert()
 	{
+		onCreate();
 		 SQLiteDatabase database = dbHelper.getWritableDatabase();
-		  long value = database.insert(Constants.OPPERTUNITIES_TABLE_NAME, null, oppertuniiesToContentValues());
+		   database.insert(Constants.OPPERTUNITIES_TABLE_NAME, null, oppertuniiesToContentValues());
 		 
 
 	}
 	public int update(String whereClause, String[] whereArgs)
 	{
+		onCreate();
 		 SQLiteDatabase database = dbHelper.getWritableDatabase();  
 		 return database.update(Constants.OPPERTUNITIES_TABLE_NAME, oppertuniiesToContentValues(), whereClause, whereArgs);
 	}
 	public int  delete(String where, String[] args)
 	{
+		onCreate();
 		SQLiteDatabase dataBase=dbHelper.getWritableDatabase();
 	     return dataBase.delete(Constants.OPPERTUNITIES_TABLE_NAME, where, args);
 	}
-	public void select(String[] projection, String selection,String[] selectionArgs, String sortOrder)
+	public List<OppertunitiesDataSource> select(String[] projection, String selection,String[] selectionArgs, String sortOrder)
 	{
+		List<OppertunitiesDataSource> oppertunitieslist = new ArrayList<OppertunitiesDataSource>();
+		onCreate();
+		 SQLiteDatabase database = dbHelper.getReadableDatabase();
+		  Cursor cursor =database.query(Constants.OPPERTUNITIES_TABLE_NAME,  projection, selection, selectionArgs, null, null, sortOrder);
+		  int count = cursor.getColumnCount();
+		  Log.e("count", String.valueOf(count));
+		  if(cursor.moveToFirst())
+		  {
+			  
+			  do
+			  {
+				  Log.e("move yo next",String.valueOf(count--));
+				  oppertunitieslist	.add(cursorToOppertunitiesDataSource(cursor));
+			  }while(cursor.moveToNext());
+			  
+		  }
+		 // cursorToOppertunitiesDataSource(cursor);
+		  else
+			  Log.e("Select null 0", "fyhtrty&&&");
+		  
+		  return oppertunitieslist;
 		
 	}
 	
 	 public boolean onCreate() {
 		  dbHelper = new DBHelper(getContext(), 1, Constants.DB_NAME, Constants.OPPERTUNITIES_DB_QUERY);
-		 // dbHelper.onCreate(db)
+		 //dbHelper.onCreate(db)
 		  return true;
 		 }
 

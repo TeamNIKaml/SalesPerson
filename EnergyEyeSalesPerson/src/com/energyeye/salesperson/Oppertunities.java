@@ -35,6 +35,7 @@ public class Oppertunities extends Activity
 	    	
 	    	 li = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 	    	 v =li.inflate(R.layout.activity_add_opertunities, null);	   ; 	
+	    	 
 	    	
 	    	dlg = builder.setView(v)
 	    			.setPositiveButton("Next", new DialogInterface.OnClickListener() {
