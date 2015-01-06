@@ -9,9 +9,60 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.os.AsyncTask;
 import android.util.Log;
 
 public class OppertunitiesDataSource {
+
+	
+
+	private String projectTitle;
+	private String projectDescription;
+	private String propertyType;
+	private String moduleType;
+	private String compCode;
+	private String contactName;
+	private String designation;
+	private String address1;
+	private String address2;
+	private String city;
+	private String county;
+	private String country;
+	private String postCode;
+	private String emailId;
+	private String dayPhone;
+	private String eveningPhone;
+	private String other;
+	private static OppertunitiesDataSource oppertunitiesDataSource;
+	
+	private Context context;
+	private String whereClause;
+	private String[] whereArgs;
+	private List<OppertunitiesDataSource> oppertunitieslist = new ArrayList<OppertunitiesDataSource>();	
+	private String[] projection;
+	String sortOrder;
+	
+	
+	
+	public String getWhereClause() {
+		return whereClause;
+	}
+
+
+	public void setWhereClause(String whereClause) {
+		this.whereClause = whereClause;
+	}
+
+
+	public String[] getWhereArgs() {
+		return whereArgs;
+	}
+
+
+	public void setWhereArgs(String[] whereArgs) {
+		this.whereArgs = whereArgs;
+	}
+
 
 	@Override
 	public String toString() {
@@ -36,27 +87,7 @@ public class OppertunitiesDataSource {
 		
 		
 	}
-
-	private String projectTitle;
-	private String projectDescription;
-	private String propertyType;
-	private String moduleType;
-	private String compCode;
-	private String contactName;
-	private String designation;
-	private String address1;
-	private String address2;
-	private String city;
-	private String county;
-	private String country;
-	private String postCode;
-	private String emailId;
-	private String dayPhone;
-	private String eveningPhone;
-	private String other;
-	private static OppertunitiesDataSource oppertunitiesDataSource;
-	private DBHelper dbHelper;
-	private Context context;
+	
 	
 	public Context getContext() {
 		return this.context;
@@ -230,58 +261,41 @@ public class OppertunitiesDataSource {
 		
 	}
 	
-	public void insert()
-	{
-		onCreate();
-		 SQLiteDatabase database = dbHelper.getWritableDatabase();
-		   database.insert(Constants.OPPERTUNITIES_TABLE_NAME, null, oppertuniiesToContentValues());
-		 
-
-	}
-	public int update(String whereClause, String[] whereArgs)
-	{
-		onCreate();
-		 SQLiteDatabase database = dbHelper.getWritableDatabase();  
-		 return database.update(Constants.OPPERTUNITIES_TABLE_NAME, oppertuniiesToContentValues(), whereClause, whereArgs);
-	}
-	public int  delete(String where, String[] args)
-	{
-		onCreate();
-		SQLiteDatabase dataBase=dbHelper.getWritableDatabase();
-	     return dataBase.delete(Constants.OPPERTUNITIES_TABLE_NAME, where, args);
-	}
-	public List<OppertunitiesDataSource> select(String[] projection, String selection,String[] selectionArgs, String sortOrder)
-	{
-		List<OppertunitiesDataSource> oppertunitieslist = new ArrayList<OppertunitiesDataSource>();
-		onCreate();
-		 SQLiteDatabase database = dbHelper.getReadableDatabase();
-		  Cursor cursor =database.query(Constants.OPPERTUNITIES_TABLE_NAME,  projection, selection, selectionArgs, null, null, sortOrder);
-		  int count = cursor.getColumnCount();
-		  Log.e("count", String.valueOf(count));
-		  if(cursor.moveToFirst())
-		  {
-			  
-			  do
-			  {
-				  Log.e("move yo next",String.valueOf(count--));
-				  oppertunitieslist	.add(cursorToOppertunitiesDataSource(cursor));
-			  }while(cursor.moveToNext());
-			  
-		  }
-		 // cursorToOppertunitiesDataSource(cursor);
-		  else
-			  Log.e("Select null 0", "fyhtrty&&&");
-		  
-		  return oppertunitieslist;
-		
-	}
 	
-	 public boolean onCreate() {
-		  dbHelper = new DBHelper(getContext(), 1, Constants.DB_NAME, Constants.OPPERTUNITIES_DB_QUERY);
-		 //dbHelper.onCreate(db)
-		  return true;
-		 }
+	
+	 public List<OppertunitiesDataSource> getOppertunitieslist() {
+		return oppertunitieslist;
+	}
 
+
+	public void setOppertunitieslist(List<OppertunitiesDataSource> oppertunitieslist) {
+		this.oppertunitieslist = oppertunitieslist;
+	}
+
+
+	public String[] getProjection() {
+		return projection;
+	}
+
+
+	public void setProjection(String[] projection) {
+		this.projection = projection;
+	}
+
+
+	public String getSortOrder() {
+		return sortOrder;
+	}
+
+
+	public void setSortOrder(String sortOrder) {
+		this.sortOrder = sortOrder;
+	}
+
+
+
+
+	
 	
 
 }
