@@ -54,7 +54,7 @@ public class SignatureView extends View {
 		setDrawingCacheEnabled(true);
 	}
 
-	@SuppressLint("NewApi")
+	@SuppressLint({ "NewApi", "ClickableViewAccessibility" })
 	@Override
 	public boolean onTouchEvent(MotionEvent event) {
 		float eventX = event.getX();

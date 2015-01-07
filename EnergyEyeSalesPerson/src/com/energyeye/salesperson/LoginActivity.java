@@ -1,8 +1,5 @@
 package com.energyeye.salesperson;
 
-import com.energyeye.salesperson.properties.SalesPerson;
-import com.energyeye.salesperson.webservice.LoginService;
-
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -16,6 +13,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.energyeye.salesperson.properties.SalesPerson;
+import com.energyeye.salesperson.webservice.LoginService;
+
 public class LoginActivity  extends Activity {
 	
 	private EditText email,password;
@@ -26,12 +26,19 @@ public class LoginActivity  extends Activity {
 	private ProgressDialog  loginProgressBar;
 	public static int progressBarStatus = 0;
 	private Handler handler = new Handler();
+	
 
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_login);
+		 
+		  
+		  setContentView(R.layout.activity_login);
+		  
+		
+
+		  
 		Log.e("onCreate", "chekLogin");
 		checkLoginStatus();				
 		init();			
@@ -44,7 +51,7 @@ public class LoginActivity  extends Activity {
 				 if (email.getText().toString().matches(emailPattern) && email.getText().toString().length() > 0)
 			        { 
 					 	if(!(password.getText().toString().length()>0))
-					 		Toast.makeText(getApplicationContext(),"Password cannot be null",Toast.LENGTH_SHORT).show();					 
+				 		Toast.makeText(getApplicationContext(),"Password cannot be null",Toast.LENGTH_SHORT).show();					 
 			          	 loginProgressBar.show();
 					 	 handler.post(new Runnable() {
 							    public void run() {

@@ -25,7 +25,8 @@ public class Constants {
 			"emailId TEXT," +
 			"dayPhone TEXT," +
 			"eveningPhone TEXT," +
-			"other TEXT )";	
+			"other TEXT," +
+			"status TEXT )";	
 	private Constants()	{}	
 
 }

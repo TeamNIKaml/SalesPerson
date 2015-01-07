@@ -96,6 +96,8 @@ public class OppertunitiesAdaptor extends BaseAdapter {
 				break;
 			case TYPE_SEPARATOR:
 				convertView = mInflater.inflate(android.R.layout.simple_list_item_1,null);
+				convertView.setClickable(false);
+				
 				holder.textView = (TextView) convertView.findViewById(android.R.id.text1);
 				holder.textView.setGravity(Gravity.CENTER);
 				holder.textView.setTextColor(Color.BLUE);

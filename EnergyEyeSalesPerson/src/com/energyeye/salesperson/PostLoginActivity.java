@@ -1,6 +1,7 @@
 package com.energyeye.salesperson;
 
 
+import android.animation.LayoutTransition;
 import android.app.TabActivity;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -11,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TabHost;
 import android.widget.TabHost.TabSpec;
@@ -21,11 +23,17 @@ public class PostLoginActivity extends TabActivity  {
 	
 	private SharedPreferences pref;
 	private Editor editor;
+	private ViewGroup mContainerView; 
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_post_login);
+		
+		  mContainerView = (ViewGroup) findViewById(R.id.post_login_container);
+		    LayoutTransition lt = new LayoutTransition();
+		    lt.disableTransitionType(LayoutTransition.DISAPPEARING);
+		    mContainerView.setLayoutTransition(lt);
 		
 		pref = getApplicationContext().getSharedPreferences(
 				"localdiskchildlocator", 0);
@@ -44,7 +52,7 @@ public class PostLoginActivity extends TabActivity  {
      
         taskTab.setIndicator(addTabImage(R.drawable.task,"task"));
         oppertunitiesTab.setIndicator(addTabImage(R.drawable.oppertunities,"Opppertunities"));
-        personalSettingTab.setIndicator(addTabImage(R.drawable.settings,"Personal Settings"));      
+        personalSettingTab.setIndicator(addTabImage(R.drawable.settings,"Personal Settings"));   
         
         
         

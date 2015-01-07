@@ -3,14 +3,9 @@ package com.energyeye.salesperson.properties;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.energyeye.salesperson.SQLLite.DBHelper;
-
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
-import android.os.AsyncTask;
-import android.util.Log;
 
 public class OppertunitiesDataSource {
 
@@ -291,11 +286,5 @@ public class OppertunitiesDataSource {
 	public void setSortOrder(String sortOrder) {
 		this.sortOrder = sortOrder;
 	}
-
-
-
-
-	
-	
 
 }
