@@ -6,13 +6,13 @@ import java.util.List;
 import com.energyeye.salesperson.SQLLite.IDBHelper;
 import com.energyeye.salesperson.SQLLite.OppertunityHelper;
 import com.energyeye.salesperson.properties.OppertunitiesDataSource;
-
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -122,6 +122,11 @@ public class TestActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_test);
+		Intent intent = new Intent(this,SignatureActivity.class);
+		startActivity(intent);
+	
+		
+		
 		insert =(Button) findViewById(R.id.insert);
 		update =(Button) findViewById(R.id.update);
 		delete =(Button) findViewById(R.id.delete);

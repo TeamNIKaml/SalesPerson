@@ -77,6 +77,7 @@ public class LoginService {
 		writeSharedPreference();
 		Intent intent = new Intent(context, com.energyeye.salesperson.PostLoginActivity.class);
 		//intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);	
+		LoginActivity.progressBarStatus = 99;
 		intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 		context.startActivity(intent);		
 		
@@ -113,6 +114,7 @@ public class LoginService {
 			super.onPostExecute(result);
 			 int loginStatus = 0;
 			JSONObject json_data;
+			publishProgress(80);
 			try {
 				json_data = new JSONObject(result);
 				for (int i = 0; i < json_data.length(); i++) {
@@ -133,6 +135,7 @@ public class LoginService {
 			}
 			 if (loginStatus == 200) {
 				    Log.e("Login Sucessful", user.getUserKey());
+				    publishProgress(92);
 				    postLogin();
 				   }else{
 					   	   Log.e("Login error",Constants.EMAIL_ID_PASSWORD_INVALID);		 
@@ -146,6 +149,7 @@ public class LoginService {
 			List<BasicNameValuePair> params1 = new ArrayList<BasicNameValuePair>();
 			params1.add(new BasicNameValuePair("emailId", user.getEmailId()));
 			params1.add(new BasicNameValuePair("password", user.getPassword()));
+			publishProgress(5);
 
 			try {
 				
@@ -155,6 +159,7 @@ public class LoginService {
 				httpPost.setEntity(new UrlEncodedFormEntity(params1));
 				HttpResponse httpResponse = httpClient.execute(httpPost);
 				HttpEntity httpEntity = httpResponse.getEntity();
+				publishProgress(20);
 				is = httpEntity.getContent();
 
 			} catch (UnsupportedEncodingException e) {
@@ -170,6 +175,7 @@ public class LoginService {
 						new InputStreamReader(is, "iso-8859-1"), 8);
 				StringBuilder sb = new StringBuilder();
 				String line = null;
+				publishProgress(60);
 				while ((line = reader.readLine()) != null) {
 					sb.append(line);
 				}
@@ -179,7 +185,7 @@ public class LoginService {
 			} catch (Exception e) {
 				Log.e("Buffer Error", "Error converting result " + e.toString());
 			}
-
+			publishProgress(70);
 			return json;
 		}
 	}
