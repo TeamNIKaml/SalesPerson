@@ -28,14 +28,28 @@ public class OppertunitiesDataSource {
 	private String dayPhone;
 	private String eveningPhone;
 	private String other;
-	private static OppertunitiesDataSource oppertunitiesDataSource;
-	
+	private String status;
 	private Context context;
 	private String whereClause;
 	private String[] whereArgs;
 	private List<OppertunitiesDataSource> oppertunitieslist = new ArrayList<OppertunitiesDataSource>();	
 	private String[] projection;
-	String sortOrder;
+	private static OppertunitiesDataSource oppertunitiesDataSource;
+	private String sortOrder;
+	
+	
+	
+	public String getStatus() {
+		return status;
+	}
+
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
+
+	
 	
 	
 	
@@ -78,7 +92,8 @@ public class OppertunitiesDataSource {
 				"emailId : " + getEmailId() + "\n" +
 				"dayPhone : "  +getDayPhone() +"\n" +
 				"eveningPhone : " +getEveningPhone() + "\n" +
-				"other : " + getOther() ;
+				"other : " + getOther()+"\n" +
+						"status :"+getStatus() ;
 		
 		
 	}
@@ -98,6 +113,15 @@ public class OppertunitiesDataSource {
 			oppertunitiesDataSource = new OppertunitiesDataSource();		
 		return oppertunitiesDataSource;
 	}
+	
+	
+public static void setOppertunitiesDataSource(OppertunitiesDataSource oppertunitiesDataSource1) {
+		
+			
+		oppertunitiesDataSource = oppertunitiesDataSource1;
+	}
+	
+	
 	
 	public String getProjectTitle() {
 		return projectTitle;

@@ -133,7 +133,7 @@ public class TestActivity extends Activity {
 		select =(Button) findViewById(R.id.select);
 		dataSource = OppertunitiesDataSource.getOppertunitiesDataSource();
 		dataSource.setContext(this);
-		setOpppertunities();
+		setOpppertunities("1");
 		
 		insert.setOnClickListener(new OnClickListener() {
 			
@@ -204,26 +204,27 @@ public class TestActivity extends Activity {
 	}
 	
 
-	private void setOpppertunities() {
+	private void setOpppertunities(String i) {
 		// TODO Auto-generated method stub
 		
-		dataSource.setProjectTitle("Project title 1");
-		dataSource.setProjectDescription("Project Description");
-		dataSource.setPropertyType("Propertytype");
-		dataSource.setModuleType("Module type");
-		dataSource.setCompCode("Compcode");
-		dataSource.setContactName("Contact Name");
-		dataSource.setDesignation("Designation");
-		dataSource.setAddress1("Address 1");
-		dataSource.setAddress2("Address 2");
-		dataSource.setCity("City");
-		dataSource.setCounty("County");
-		dataSource.setCountry("Country");
-		dataSource.setPostCode("Post Code");
-		dataSource.setEmailId("Email id");
-		dataSource.setDayPhone("Day phone");
-		dataSource.setEveningPhone("Evening phone");
-		dataSource.setOther("Other");
+		dataSource.setProjectTitle("Project title"+i);
+		dataSource.setProjectDescription("Project Description"+i);
+		dataSource.setPropertyType("Propertytype"+i);
+		dataSource.setModuleType("Module type"+i);
+		dataSource.setCompCode("Compcode"+i);
+		dataSource.setContactName("Contact Name"+i);
+		dataSource.setDesignation("Designation"+i);
+		dataSource.setAddress1("Address 1"+i);
+		dataSource.setAddress2("Address 2+i");
+		dataSource.setCity("City"+i);
+		dataSource.setCounty("County"+i);
+		dataSource.setCountry("Country"+i);
+		dataSource.setPostCode("Post Code"+i);
+		dataSource.setEmailId("Email id"+i);
+		dataSource.setDayPhone("Day phone"+i);
+		dataSource.setEveningPhone("Evening phone"+i);
+		dataSource.setOther("Other"+i);
+		dataSource.setOther("Status"+i);
 		
 	}
 

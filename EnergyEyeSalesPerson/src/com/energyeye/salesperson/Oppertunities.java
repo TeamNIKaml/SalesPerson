@@ -23,6 +23,7 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.energyeye.salesperson.properties.OppertunitiesDataSource;
+import com.energyeye.salesperson.webservice.OppertunityService;
 
 
 
@@ -40,6 +41,9 @@ public class Oppertunities extends Activity
     private Spinner property_type,module_type,country;
 	private List<String> propertyTypeList,moduleTypeList,countryList;
 	private ArrayAdapter<String> propertyTypeAdaptor,moduleTypeAdaptor,countryAdaptor;
+	private OppertunityService service = new OppertunityService(this);
+	private List<OppertunitiesDataSource> oppertunitieslist = new ArrayList<OppertunitiesDataSource>();	
+	
 //	private IDBHelper helper = new OppertunityHelper();
 	
 	
@@ -51,7 +55,7 @@ public class Oppertunities extends Activity
 	    	AlertDialog.Builder builder = new AlertDialog.Builder(this);
 	    	
 	    	 li = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-	    	 v =li.inflate(R.layout.activity_add_opertunities_old, null);	   ; 	
+	    	 v =li.inflate(R.layout.activity_add_opertunities, null);	   ; 	
 	    	 
 	    	 initDialog(v);
 	    	 if(id == 102)
@@ -99,14 +103,25 @@ public class Oppertunities extends Activity
            listView = (ListView)findViewById(R.id.myOppertunities);
            OppertunitiesAdaptor oppertunitiesAdaptor = new OppertunitiesAdaptor(this);
            
-           for (int i = 1; i < 30; i++) {
-   			oppertunitiesAdaptor.addTitle("MyOppertunitiesTitle #" + i);
-   			oppertunitiesAdaptor.addendDate("Date #" + i);
-   			oppertunitiesAdaptor.addStatus("Status #"+i);
-   			
-   		}
+           service.getOppertunitiesService();
+           Log.e("onCreate opeertunities","onCreate oppertunities");
+           oppertunitieslist = dataSource.getOppertunitieslist();
            
-           listView.setAdapter(oppertunitiesAdaptor);
+           for(OppertunitiesDataSource oppertunities : oppertunitieslist)
+  		 {
+        	   oppertunitiesAdaptor.addTitle(oppertunities.getProjectTitle());
+        	   oppertunitiesAdaptor.addStatus(oppertunities.getStatus());
+        	   oppertunitiesAdaptor.addendDate(oppertunities.getContactName());
+        	   
+  			 
+  		 }
+           
+          
+           
+          // listView.setAdapter(oppertunitiesAdaptor);
+           
+           
+           
            oppertunitiesAdaptor.notifyDataSetChanged();
            listView.setOnItemClickListener(new OnItemClickListener(){
 
@@ -206,6 +221,11 @@ public class Oppertunities extends Activity
     	 }
 		
 	}
+    
+    
+  
+    
+    
        
        @SuppressWarnings("deprecation")
 	private void processOpertunities(Object item)

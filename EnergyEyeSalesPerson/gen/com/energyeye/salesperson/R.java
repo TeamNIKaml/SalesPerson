@@ -17,7 +17,7 @@ public final class R {
     }
     public static final class color {
         public static final int EditTextBackGround=0x7f050002;
-        public static final int EditTextFont=0x7f050003;
+        public static final int EditTextColor=0x7f050003;
         public static final int NextOppertunities=0x7f050005;
         public static final int ProjectDescription=0x7f050004;
         public static final int SpinnerText=0x7f050006;

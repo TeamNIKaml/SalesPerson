@@ -20,11 +20,11 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/layout_marginLeft_login"
             android:layout_marginRight="@dimen/layout_marginRight_login"
-            android:background="#b0b0b0"
+            android:background="@color/EditTextBackGround"
             android:hint="@string/email"
             android:inputType="textEmailAddress"
             android:padding="@dimen/android_padding_login"
-            android:textColor="#000"
+            android:textColor="@color/EditTextColor"
             android:textSize="@dimen/android_textSize_login" >
 
             <requestFocus />
@@ -42,16 +42,15 @@
 
                             <EditText
                                 android:id="@+id/password"
-                                android:inputType="textPassword"
-                               
+                                android:inputType="textPassword"                               
                                 android:layout_marginRight="@dimen/layout_marginRight_login"
                                 android:layout_marginLeft="@dimen/layout_marginLeft_login"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:background="#b0b0b0"
+                                android:background="@color/EditTextBackGround"
                                 android:hint="@string/pass"
                                 android:padding="@dimen/android_padding_login"
-                                android:textColor="#000"
+                                android:textColor="@color/EditTextColor"
                                 android:textSize="@dimen/android_textSize_login" />
 
                        </TableRow> 

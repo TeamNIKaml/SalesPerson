@@ -26,12 +26,15 @@ public class OppertunitiesAdaptor extends BaseAdapter {
 	
 	
 	public void addStatus(String item) {
+		Log.e("addStatus", "addStatus");
 		status.add(item);
 		notifyDataSetChanged();
 	}
 	
 	
 	public void addendDate(String item) {
+		Log.e("addendDate", "addendDate");
+
 		endDate.add(item);
 		notifyDataSetChanged();
 	}
@@ -39,6 +42,8 @@ public class OppertunitiesAdaptor extends BaseAdapter {
 	
 	
 	public void addTitle(String item) {
+		
+		Log.e("addTitle", "addTitle");
 		title.add(item);
 		notifyDataSetChanged();
 	}
