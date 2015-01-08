@@ -26,6 +26,7 @@ public class OppertunitiesAdaptor extends BaseAdapter {
 	private ArrayList<String> endDate = new ArrayList<String>();
 	private TreeSet<Integer> sectionHeader = new TreeSet<Integer>();
 	private ArrayList<String> status = new ArrayList<String>();
+	private TextView titleTextView,statusTextView,dateTextView;
 	
 	
 	public void addStatus(String item) {
@@ -46,12 +47,7 @@ public class OppertunitiesAdaptor extends BaseAdapter {
 		notifyDataSetChanged();
 	}
 
-	public void addSectionHeaderItem(String item) {
-		title.add(item);
-		endDate.add("");
-		sectionHeader.add(title.size() - 1);
-		notifyDataSetChanged();
-	}
+	
 	
 	public OppertunitiesAdaptor(Context ctx) {
 		context = ctx;
@@ -88,36 +84,33 @@ public class OppertunitiesAdaptor extends BaseAdapter {
 		
 		 LayoutInflater mInflater  = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		
-		ViewHolder holder = null;
+		//ViewHolder holder = null;
 		int rowType = getItemViewType(position);
 		
 		
 		if (convertView == null) {
-			holder = new ViewHolder();
+		//	holder = new ViewHolder();
 			
 				convertView = mInflater.inflate(R.layout.my_oppertunities,null);
-				holder.titleTextView = (TextView) convertView.findViewById(R.id.myOppertunity_title);
-				holder.statusTextView = (TextView) convertView.findViewById(R.id.myOppertunity_status);
-				holder.dateTextView = (TextView) convertView.findViewById(R.id.myOppertunity_date);
-				
-				
-			
-				
-				
-			
-		} else {
+				titleTextView = (TextView) convertView.findViewById(R.id.myOppertunity_title);
+				statusTextView = (TextView) convertView.findViewById(R.id.myOppertunity_status);
+				dateTextView = (TextView) convertView.findViewById(R.id.myOppertunity_date);
+		} 
+		/*else 
+		{
 			holder = (ViewHolder) convertView.getTag();
+		}*/				
+		if(title.get(position)!= null)
+		{
+			titleTextView.setText(title.get(position));
+			dateTextView.setText(endDate.get(position));
+			statusTextView.setText(status.get(position));
 		}
-		
-		holder.titleTextView.setText(title.get(position));
-		holder.dateTextView.setText(endDate.get(position));
-		holder.statusTextView.setText(status.get(position));
-
 		return convertView;
 	}
 	
-	public static class ViewHolder {
+	/*public static class ViewHolder {
 		public TextView titleTextView,statusTextView,dateTextView;
-	}
+	}*/
 
 }

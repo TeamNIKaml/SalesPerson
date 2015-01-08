@@ -106,7 +106,7 @@ public class Oppertunities extends Activity
    			
    		}
            
-          
+           listView.setAdapter(oppertunitiesAdaptor);
            oppertunitiesAdaptor.notifyDataSetChanged();
            listView.setOnItemClickListener(new OnItemClickListener(){
 

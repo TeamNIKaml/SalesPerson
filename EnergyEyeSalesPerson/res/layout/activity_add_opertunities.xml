@@ -3,8 +3,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
              android:shrinkColumns="*"
-            android:background="#ffffff">
-<!--             android:shrinkColumns="*"  android:stretchColumns="*"  -->
+            android:background="#ffffff"
+           android:stretchColumns="*"  >
 
                         <!--projectTitle-->
                         
