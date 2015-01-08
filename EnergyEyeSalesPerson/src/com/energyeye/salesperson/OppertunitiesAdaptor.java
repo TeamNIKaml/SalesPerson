@@ -1,12 +1,10 @@
 package com.energyeye.salesperson;
 
 import java.util.ArrayList;
-import java.util.TreeSet;
+
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.graphics.Color;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,12 +17,10 @@ import android.widget.TextView;
 public class OppertunitiesAdaptor extends BaseAdapter {
 
 	
-	private static final int TYPE_ITEM = 0;
-	private static final int TYPE_SEPARATOR = 1;
+	
 	private Context context;
 	private ArrayList<String> title = new ArrayList<String>();
 	private ArrayList<String> endDate = new ArrayList<String>();
-	private TreeSet<Integer> sectionHeader = new TreeSet<Integer>();
 	private ArrayList<String> status = new ArrayList<String>();
 	private TextView titleTextView,statusTextView,dateTextView;
 	
@@ -62,8 +58,7 @@ public class OppertunitiesAdaptor extends BaseAdapter {
 
 	@Override
 	public Object getItem(int index) {
-		// TODO Auto-generated method stub
-		//return countries[index];
+		
 		if(title.get(index) != null)
 		Log.e("gget item", title.get(index)+"#"+endDate.get(index));
 		else
@@ -73,8 +68,7 @@ public class OppertunitiesAdaptor extends BaseAdapter {
 
 	@Override
 	public long getItemId(int position) {
-		// TODO Auto-generated method stub
-		//return countries[position].hashCode();
+		
 		return position;
 	}
 
@@ -84,22 +78,18 @@ public class OppertunitiesAdaptor extends BaseAdapter {
 		
 		 LayoutInflater mInflater  = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		
-		//ViewHolder holder = null;
-		int rowType = getItemViewType(position);
+		
 		
 		
 		if (convertView == null) {
-		//	holder = new ViewHolder();
+		
 			
 				convertView = mInflater.inflate(R.layout.my_oppertunities,null);
 				titleTextView = (TextView) convertView.findViewById(R.id.myOppertunity_title);
 				statusTextView = (TextView) convertView.findViewById(R.id.myOppertunity_status);
 				dateTextView = (TextView) convertView.findViewById(R.id.myOppertunity_date);
 		} 
-		/*else 
-		{
-			holder = (ViewHolder) convertView.getTag();
-		}*/				
+				
 		if(title.get(position)!= null)
 		{
 			titleTextView.setText(title.get(position));
@@ -109,8 +99,5 @@ public class OppertunitiesAdaptor extends BaseAdapter {
 		return convertView;
 	}
 	
-	/*public static class ViewHolder {
-		public TextView titleTextView,statusTextView,dateTextView;
-	}*/
-
+	
 }

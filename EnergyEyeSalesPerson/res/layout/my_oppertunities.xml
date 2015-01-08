@@ -1,0 +1,57 @@
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="match_parent" 
+     android:shrinkColumns="*"  android:stretchColumns="*">
+     
+       <TableRow
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:gravity="left" >
+
+        <TextView
+            android:id="@+id/myOppertunity_title"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/layout_marginLeft_oppertunities"
+            android:layout_marginRight="@dimen/layout_marginRight_oppertunities"
+            android:padding="@dimen/android_padding_login"
+            android:text="@string/title_activity_add_opertunities"
+            android:textColor="#000"
+            android:textSize="@dimen/android_textSize_login" />
+          <TextView
+            android:id="@+id/myOppertunity_date"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/layout_marginLeft_oppertunities"
+            android:layout_marginRight="@dimen/layout_marginRight_oppertunities"
+            android:padding="@dimen/android_padding_login"
+            android:text="@string/title_activity_add_opertunities"
+            android:textColor="#000"
+            android:textSize="@dimen/android_textSize_login" />
+         
+    </TableRow>
+    
+        <TableRow
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/layout_marginTop_oppertunities"
+        android:gravity="left" >
+
+      
+        <TextView
+            android:id="@+id/myOppertunity_status"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/layout_marginLeft_login"
+            android:layout_marginRight="@dimen/layout_marginRight_login"
+            android:padding="@dimen/android_padding_login"
+            android:text="@string/title_activity_add_opertunities"
+            android:textColor="#000"
+            android:textSize="@dimen/android_textSize_login" />
+         
+    </TableRow>
+    
+       
+    
+
+</TableLayout>
