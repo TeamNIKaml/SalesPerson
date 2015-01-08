@@ -46,7 +46,7 @@ public class TestActivity extends Activity {
 	    	AlertDialog.Builder builder = new AlertDialog.Builder(this);
 	    	
 	    	LayoutInflater li = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-	    	 v =li.inflate(R.layout.activity_add_opertunities, null);	   	
+	    	 v =li.inflate(R.layout.activity_add_opertunities_old, null);	   	
 	    	 initDialog(v);
 	    	 setDialogData();
 	    	

@@ -31,9 +31,35 @@ public final class R {
          (such as screen margins) for screens with more than 820dp of available width. This
          would include 7" and 10" devices in landscape (~960dp and ~1280dp respectively).
     
+ Default screen margins, per the Android Design guidelines. 
+ Default screen margins, per the Android Design guidelines. 
+ Default screen margins, per the Android Design guidelines. 
+ Default screen margins, per the Android Design guidelines. 
          */
         public static final int activity_horizontal_margin=0x7f060000;
         public static final int activity_vertical_margin=0x7f060001;
+        public static final int android_padding_login=0x7f06000c;
+        public static final int android_padding_oppertunities=0x7f060005;
+        public static final int android_textSize_login=0x7f06000d;
+        public static final int android_textSize_oppertunities=0x7f060006;
+        public static final int layout_marginLeft_login=0x7f06000a;
+        public static final int layout_marginLeft_loginbutton=0x7f06000b;
+        public static final int layout_marginLeft_oppertunities=0x7f060004;
+        public static final int layout_marginRight_login=0x7f060009;
+        public static final int layout_marginRight_oppertunities=0x7f060003;
+        /**  Login layout dimension 
+ Login layout dimension 
+ Login layout dimension 
+ Login layout dimension 
+         */
+        public static final int layout_marginTop_login=0x7f060007;
+        public static final int layout_marginTop_login_password=0x7f060008;
+        /**  Oppertunities dimensions 
+ Oppertunities dimensions 
+ Oppertunities dimensions 
+ Oppertunities dimensions 
+         */
+        public static final int layout_marginTop_oppertunities=0x7f060002;
     }
     public static final class drawable {
         public static final int add=0x7f020000;
@@ -43,74 +69,73 @@ public final class R {
         public static final int task=0x7f020004;
     }
     public static final class id {
-        public static final int TextView04=0x7f0a001d;
-        public static final int TextView05=0x7f0a001e;
-        public static final int TextView06=0x7f0a001f;
-        public static final int TextView07=0x7f0a0020;
-        public static final int TextView08=0x7f0a0021;
-        public static final int action_settings=0x7f0a0035;
-        public static final int addOppertuniites=0x7f0a002e;
-        public static final int address1=0x7f0a000a;
-        public static final int address2=0x7f0a000b;
-        public static final int city=0x7f0a000e;
-        public static final int clear=0x7f0a0027;
-        public static final int compcode=0x7f0a0010;
-        public static final int contact=0x7f0a0007;
-        public static final int countryspinner=0x7f0a0005;
-        public static final int county=0x7f0a000d;
-        public static final int dayphone=0x7f0a0012;
-        public static final int delete=0x7f0a002b;
+        public static final int action_settings=0x7f0a0032;
+        public static final int addOppertuniites=0x7f0a002b;
+        public static final int address1=0x7f0a0007;
+        public static final int address2=0x7f0a0008;
+        public static final int city=0x7f0a000a;
+        public static final int clear=0x7f0a0021;
+        public static final int compcode=0x7f0a000b;
+        public static final int contact=0x7f0a0005;
+        public static final int countryspinner=0x7f0a0004;
+        public static final int county=0x7f0a0009;
+        public static final int dayphone=0x7f0a000d;
+        public static final int delete=0x7f0a0025;
         public static final int description=0x7f0a0001;
-        public static final int designation=0x7f0a0008;
-        public static final int email=0x7f0a001b;
-        public static final int emailOppertunities=0x7f0a0014;
-        public static final int eveningphone=0x7f0a0015;
-        public static final int icon=0x7f0a0030;
-        public static final int insert=0x7f0a0029;
-        public static final int linearLayout1=0x7f0a0002;
-        public static final int linearLayout2=0x7f0a0006;
-        public static final int linearLayout3=0x7f0a0009;
-        public static final int linearLayout4=0x7f0a000c;
-        public static final int linearLayout5=0x7f0a000f;
-        public static final int linearLayout6=0x7f0a0013;
-        public static final int listitem1=0x7f0a002f;
-        public static final int loginButton=0x7f0a0019;
-        public static final int login_container=0x7f0a0018;
-        public static final int logout=0x7f0a0034;
-        public static final int modulespinner=0x7f0a0004;
-        public static final int myOppertunities=0x7f0a002d;
-        public static final int myTask=0x7f0a0032;
-        public static final int nextOpportunities=0x7f0a0017;
-        public static final int other=0x7f0a0016;
-        public static final int password=0x7f0a001a;
-        public static final int post_login_container=0x7f0a0022;
-        public static final int postcode=0x7f0a0011;
+        public static final int designation=0x7f0a0006;
+        public static final int email=0x7f0a0018;
+        public static final int emailOppertunities=0x7f0a000e;
+        public static final int eveningphone=0x7f0a000f;
+        public static final int icon=0x7f0a002d;
+        public static final int insert=0x7f0a0023;
+        public static final int linearLayout1=0x7f0a0012;
+        public static final int linearLayout2=0x7f0a0013;
+        public static final int linearLayout3=0x7f0a0014;
+        public static final int linearLayout4=0x7f0a0015;
+        public static final int linearLayout5=0x7f0a0016;
+        public static final int linearLayout6=0x7f0a0017;
+        public static final int listitem1=0x7f0a002c;
+        public static final int loginButton=0x7f0a001a;
+        public static final int login_container=0x7f0a001b;
+        public static final int logout=0x7f0a0031;
+        public static final int modulespinner=0x7f0a0003;
+        public static final int myOppertunities=0x7f0a002a;
+        public static final int myOppertunity_date=0x7f0a0028;
+        public static final int myOppertunity_status=0x7f0a0029;
+        public static final int myOppertunity_title=0x7f0a0027;
+        public static final int myTask=0x7f0a002f;
+        public static final int nextOpportunities=0x7f0a0011;
+        public static final int other=0x7f0a0010;
+        public static final int password=0x7f0a0019;
+        public static final int post_login_container=0x7f0a001c;
+        public static final int postcode=0x7f0a000c;
         public static final int projectTitle=0x7f0a0000;
-        public static final int propertyspinner=0x7f0a0003;
-        public static final int save=0x7f0a0028;
-        public static final int select=0x7f0a002c;
-        public static final int signature=0x7f0a0026;
-        public static final int tab1=0x7f0a0023;
-        public static final int tab2=0x7f0a0024;
-        public static final int tab3=0x7f0a0025;
-        public static final int tableRow1=0x7f0a001c;
-        public static final int taskadaptor=0x7f0a0033;
-        public static final int title=0x7f0a0031;
-        public static final int update=0x7f0a002a;
+        public static final int propertyspinner=0x7f0a0002;
+        public static final int save=0x7f0a0022;
+        public static final int select=0x7f0a0026;
+        public static final int signature=0x7f0a0020;
+        public static final int tab1=0x7f0a001d;
+        public static final int tab2=0x7f0a001e;
+        public static final int tab3=0x7f0a001f;
+        public static final int taskadaptor=0x7f0a0030;
+        public static final int title=0x7f0a002e;
+        public static final int update=0x7f0a0024;
     }
     public static final class layout {
         public static final int activity_add_opertunities=0x7f030000;
-        public static final int activity_login=0x7f030001;
-        public static final int activity_oppertunities_table=0x7f030002;
-        public static final int activity_post_login=0x7f030003;
-        public static final int activity_signature=0x7f030004;
-        public static final int activity_test=0x7f030005;
-        public static final int oppertunities=0x7f030006;
-        public static final int personal_settings=0x7f030007;
-        public static final int spinnertext=0x7f030008;
-        public static final int tab_indicator=0x7f030009;
-        public static final int task=0x7f03000a;
-        public static final int task_adaptor=0x7f03000b;
+        public static final int activity_add_opertunities_old=0x7f030001;
+        public static final int activity_login=0x7f030002;
+        public static final int activity_login_old=0x7f030003;
+        public static final int activity_post_login=0x7f030004;
+        public static final int activity_signature=0x7f030005;
+        public static final int activity_test=0x7f030006;
+        public static final int my_oppertunities=0x7f030007;
+        public static final int oppertunities=0x7f030008;
+        public static final int personal_settings=0x7f030009;
+        public static final int spinnertext=0x7f03000a;
+        public static final int tab_indicator=0x7f03000b;
+        public static final int task=0x7f03000c;
+        public static final int task_adaptor=0x7f03000d;
     }
     public static final class menu {
         public static final int postlogin=0x7f090000;

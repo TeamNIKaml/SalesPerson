@@ -25,6 +25,14 @@ public class OppertunitiesAdaptor extends BaseAdapter {
 	private ArrayList<String> title = new ArrayList<String>();
 	private ArrayList<String> endDate = new ArrayList<String>();
 	private TreeSet<Integer> sectionHeader = new TreeSet<Integer>();
+	private ArrayList<String> status = new ArrayList<String>();
+	
+	
+	public void addStatus(String item) {
+		status.add(item);
+		notifyDataSetChanged();
+	}
+	
 	
 	public void addendDate(String item) {
 		endDate.add(item);
@@ -64,7 +72,7 @@ public class OppertunitiesAdaptor extends BaseAdapter {
 		Log.e("gget item", title.get(index)+"#"+endDate.get(index));
 		else
 			Log.e("gget item", "Null");
-		return title.get(index)+"#"+endDate.get(index);
+		return title.get(index)+"#"+endDate.get(index)+"#"+status.get(index);
 	}
 
 	@Override
@@ -86,36 +94,30 @@ public class OppertunitiesAdaptor extends BaseAdapter {
 		
 		if (convertView == null) {
 			holder = new ViewHolder();
-			switch (rowType) {
-			case TYPE_ITEM:
-				convertView = mInflater.inflate(android.R.layout.simple_list_item_2,null);
-				holder.textView = (TextView) convertView.findViewById(android.R.id.text1);
-				holder.textView1 = (TextView) convertView.findViewById(android.R.id.text2);
-				holder.textView.setTextColor(Color.BLACK);
+			
+				convertView = mInflater.inflate(R.layout.my_oppertunities,null);
+				holder.titleTextView = (TextView) convertView.findViewById(R.id.myOppertunity_title);
+				holder.statusTextView = (TextView) convertView.findViewById(R.id.myOppertunity_status);
+				holder.dateTextView = (TextView) convertView.findViewById(R.id.myOppertunity_date);
 				
-				break;
-			case TYPE_SEPARATOR:
-				convertView = mInflater.inflate(android.R.layout.simple_list_item_1,null);
-				convertView.setClickable(false);
 				
-				holder.textView = (TextView) convertView.findViewById(android.R.id.text1);
-				holder.textView.setGravity(Gravity.CENTER);
-				holder.textView.setTextColor(Color.BLUE);
-				break;
-			}
-			convertView.setTag(holder);
+			
+				
+				
+			
 		} else {
 			holder = (ViewHolder) convertView.getTag();
 		}
 		
-		holder.textView.setText(title.get(position));
-		holder.textView1.setText(endDate.get(position));
+		holder.titleTextView.setText(title.get(position));
+		holder.dateTextView.setText(endDate.get(position));
+		holder.statusTextView.setText(status.get(position));
 
 		return convertView;
 	}
 	
 	public static class ViewHolder {
-		public TextView textView,textView1;
+		public TextView titleTextView,statusTextView,dateTextView;
 	}
 
 }

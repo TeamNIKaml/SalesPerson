@@ -2,11 +2,6 @@ package com.energyeye.salesperson;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import com.energyeye.salesperson.SQLLite.IDBHelper;
-import com.energyeye.salesperson.SQLLite.OppertunityHelper;
-import com.energyeye.salesperson.properties.OppertunitiesDataSource;
-
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -27,6 +22,8 @@ import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.energyeye.salesperson.properties.OppertunitiesDataSource;
+
 
 
 @SuppressLint("InflateParams")
@@ -43,7 +40,7 @@ public class Oppertunities extends Activity
     private Spinner property_type,module_type,country;
 	private List<String> propertyTypeList,moduleTypeList,countryList;
 	private ArrayAdapter<String> propertyTypeAdaptor,moduleTypeAdaptor,countryAdaptor;
-	private IDBHelper helper = new OppertunityHelper();
+//	private IDBHelper helper = new OppertunityHelper();
 	
 	
 	 @Override
@@ -54,7 +51,7 @@ public class Oppertunities extends Activity
 	    	AlertDialog.Builder builder = new AlertDialog.Builder(this);
 	    	
 	    	 li = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-	    	 v =li.inflate(R.layout.activity_add_opertunities, null);	   ; 	
+	    	 v =li.inflate(R.layout.activity_add_opertunities_old, null);	   ; 	
 	    	 
 	    	 initDialog(v);
 	    	 if(id == 102)
@@ -105,9 +102,8 @@ public class Oppertunities extends Activity
            for (int i = 1; i < 30; i++) {
    			oppertunitiesAdaptor.addTitle("MyOppertunitiesTitle #" + i);
    			oppertunitiesAdaptor.addendDate("Date #" + i);
-   			if (i % 4 == 0) {
-   				oppertunitiesAdaptor.addSectionHeaderItem("Section #" + i/4);
-   			}
+   			oppertunitiesAdaptor.addStatus("Status #"+i);
+   			
    		}
            
           
@@ -140,7 +136,7 @@ public class Oppertunities extends Activity
            
          // listView.setAdapter(oppertunitiesAdaptor);
            //listView = new ListView(this);
-           listView.setAdapter(oppertunitiesAdaptor);
+          // listView.setAdapter(oppertunitiesAdaptor);
           //setListAdapter(oppertunitiesAdaptor);
        }
     
@@ -211,7 +207,8 @@ public class Oppertunities extends Activity
 		
 	}
        
-       private void processOpertunities(Object item)
+       @SuppressWarnings("deprecation")
+	private void processOpertunities(Object item)
        {
        	if(item == null)
        		Toast.makeText(this,"item null",Toast.LENGTH_LONG).show();
