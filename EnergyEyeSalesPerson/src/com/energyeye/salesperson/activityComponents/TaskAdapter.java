@@ -1,4 +1,4 @@
-package com.energyeye.salesperson;
+package com.energyeye.salesperson.activityComponents;
 
 import java.util.ArrayList;
 import java.util.TreeSet;

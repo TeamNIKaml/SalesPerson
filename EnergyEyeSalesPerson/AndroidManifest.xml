@@ -25,7 +25,7 @@
         android:theme="@style/AppTheme" >
         
          <activity
-            android:name=".LoginActivity"
+            android:name=".activity.LoginActivity"
             android:label="@string/app_name" >  
              <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -35,13 +35,13 @@
         
         
           <activity
-            android:name=".TestActivity"
+            android:name=".activity.TestActivity"
             android:label="@string/title_activity_test" >                   
               
         </activity>
         
         <activity
-            android:name=".SignatureActivity"
+            android:name=".activity.SignatureActivity"
             android:label="@string/app_name" >         
         </activity>
         
@@ -51,32 +51,32 @@
      
       
         <activity
-            android:name=".PostLoginActivity"
+            android:name=".activity.PostLoginActivity"
             android:label="@string/title_activity_post_login" >
         </activity>
         <activity
-            android:name=".PersonalSetting"
+            android:name="com.energyeye.salesperson.fragments.PersonalSetting"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.PersonalSetting" />
             </intent-filter>
         </activity>
         <activity
-            android:name=".Task"
+            android:name="com.energyeye.salesperson.fragments.Task"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.Task" />
             </intent-filter>
         </activity>
         <activity
-            android:name=".Oppertunities"
+            android:name="com.energyeye.salesperson.fragments.Oppertunities"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.Oppertunities" />
             </intent-filter>
         </activity>
         <activity
-            android:name=".AddOpertunitiesActivity"
+            android:name=".activity.AddOpertunitiesActivity"
             android:label="@string/title_activity_add_opertunities" >
         </activity>
         

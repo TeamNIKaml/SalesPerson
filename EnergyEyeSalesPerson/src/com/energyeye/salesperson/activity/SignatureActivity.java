@@ -1,4 +1,4 @@
-package com.energyeye.salesperson;
+package com.energyeye.salesperson.activity;
 
 import java.io.BufferedOutputStream;
 import java.io.File;
@@ -17,6 +17,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 
+import com.energyeye.salesperson.R;
 import com.energyeye.salesperson.properties.SignatureView;
 import com.energyeye.salesperson.webservice.FileUploadService;
 

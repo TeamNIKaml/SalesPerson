@@ -17,7 +17,7 @@ import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import com.energyeye.salesperson.LoginActivity;
+import com.energyeye.salesperson.activity.LoginActivity;
 import com.energyeye.salesperson.properties.Constants;
 import com.energyeye.salesperson.properties.SalesPerson;
 
@@ -75,9 +75,9 @@ public class LoginService {
 		
 		
 		writeSharedPreference();
-		Intent intent = new Intent(context, com.energyeye.salesperson.PostLoginActivity.class);
+		Intent intent = new Intent(context, com.energyeye.salesperson.activity.PostLoginActivity.class);
 		//intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);	
-		LoginActivity.progressBarStatus = 99;
+		
 		intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 		context.startActivity(intent);		
 		
@@ -103,7 +103,7 @@ public class LoginService {
 
 		@Override
 		protected void onProgressUpdate(Integer... values) {
-			LoginActivity.progressBarStatus = values[0];
+		
 			// TODO Auto-generated method stub
 			super.onProgressUpdate(values);
 		}

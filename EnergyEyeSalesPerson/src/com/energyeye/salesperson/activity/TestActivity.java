@@ -1,10 +1,11 @@
-package com.energyeye.salesperson;
+package com.energyeye.salesperson.activity;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import com.energyeye.salesperson.SQLLite.IDBHelper;
-import com.energyeye.salesperson.SQLLite.OppertunityHelper;
+import com.energyeye.salesperson.R;
+import com.energyeye.salesperson.dbComponents.IDBHelper;
+import com.energyeye.salesperson.dbComponents.OppertunityHelper;
 import com.energyeye.salesperson.properties.OppertunitiesDataSource;
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -82,12 +83,12 @@ public class TestActivity extends Activity {
 		 propertyTypeList.add(dataSource.getPropertyType());
 		  moduleTypeList.add(dataSource.getModuleType());
 		  countryList.add(dataSource.getCountry());
-		  propertyTypeAdaptor = new ArrayAdapter<String>(getApplicationContext(),
+		/*  propertyTypeAdaptor = new ArrayAdapter<String>(getApplicationContext(),
 				  R.layout.spinnertext, propertyTypeList);
 		  moduleTypeAdaptor = new ArrayAdapter<String>(getApplicationContext(),
 		            R.layout.spinnertext, moduleTypeList);
 		  countryAdaptor = new ArrayAdapter<String>(getApplicationContext(),
-				  R.layout.spinnertext, countryList);
+				  R.layout.spinnertext, countryList);*/
 		 property_type.setAdapter(propertyTypeAdaptor);
 		  module_type.setAdapter(moduleTypeAdaptor);
 		 country.setAdapter(countryAdaptor);
@@ -121,16 +122,16 @@ public class TestActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_test);
+		setContentView(R.layout.activity_login);
 		Intent intent = new Intent(this,SignatureActivity.class);
 		startActivity(intent);
 	
 		
 		
-		insert =(Button) findViewById(R.id.insert);
+		/*insert =(Button) findViewById(R.id.insert);
 		update =(Button) findViewById(R.id.update);
 		delete =(Button) findViewById(R.id.delete);
-		select =(Button) findViewById(R.id.select);
+		select =(Button) findViewById(R.id.select);*/
 		dataSource = OppertunitiesDataSource.getOppertunitiesDataSource();
 		dataSource.setContext(this);
 		setOpppertunities("1");

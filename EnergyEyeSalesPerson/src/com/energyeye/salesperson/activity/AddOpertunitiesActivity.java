@@ -1,6 +1,8 @@
-package com.energyeye.salesperson;
+package com.energyeye.salesperson.activity;
 
 
+
+import com.energyeye.salesperson.R;
 
 import android.app.Activity;
 import android.os.Bundle;

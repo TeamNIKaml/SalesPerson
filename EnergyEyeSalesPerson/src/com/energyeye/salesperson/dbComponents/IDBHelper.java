@@ -1,4 +1,4 @@
-package com.energyeye.salesperson.SQLLite;
+package com.energyeye.salesperson.dbComponents;
 
 
 

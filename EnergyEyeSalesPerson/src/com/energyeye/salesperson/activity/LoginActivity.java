@@ -1,4 +1,4 @@
-package com.energyeye.salesperson;
+package com.energyeye.salesperson.activity;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.energyeye.salesperson.R;
 import com.energyeye.salesperson.properties.SalesPerson;
 import com.energyeye.salesperson.webservice.LoginService;
 
@@ -23,9 +24,9 @@ public class LoginActivity  extends Activity {
 	private LoginService loginService;
 	private static SalesPerson user;
 	private SharedPreferences pref;
-	private ProgressDialog  loginProgressBar;
-	public static int progressBarStatus = 0;
-	private Handler handler = new Handler();
+	//private ProgressDialog  loginProgressBar;
+//	public static int progressBarStatus = 0;
+	//private Handler handler = new Handler();
 	
 
 
@@ -52,12 +53,7 @@ public class LoginActivity  extends Activity {
 			        { 
 					 	if(!(password.getText().toString().length()>0))
 				 		Toast.makeText(getApplicationContext(),"Password cannot be null",Toast.LENGTH_SHORT).show();					 
-			          	 loginProgressBar.show();
-					 	 handler.post(new Runnable() {
-							    public void run() {
-							    	loginProgressBar.setProgress(progressBarStatus);				      
-							    }
-							        });					 	
+			          	 				 	
 					 	Log.e("Login Activity", "dfsdfs");
 			            user = SalesPerson.getUser();
 			            user.setEmailId(email.getText().toString());
@@ -88,11 +84,7 @@ public class LoginActivity  extends Activity {
 		password=(EditText)findViewById(R.id.password);
 		loginButton =(Button)findViewById(R.id.loginButton);
 		loginService = new LoginService(this);
-		 loginProgressBar = new ProgressDialog(LoginActivity.this);
-         loginProgressBar.setTitle("Loging in||");
-         loginProgressBar.setMessage("Please Wait!!");
-         loginProgressBar.setCancelable(true);
-         loginProgressBar.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+		
 	}
 
 

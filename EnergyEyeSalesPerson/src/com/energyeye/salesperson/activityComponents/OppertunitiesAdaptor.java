@@ -1,6 +1,8 @@
-package com.energyeye.salesperson;
+package com.energyeye.salesperson.activityComponents;
 
 import java.util.ArrayList;
+
+import com.energyeye.salesperson.R;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -89,8 +91,8 @@ public class OppertunitiesAdaptor extends BaseAdapter {
 		if (convertView == null) {
 		
 			
-				convertView = mInflater.inflate(R.layout.my_oppertunities,null);
-				titleTextView = (TextView) convertView.findViewById(R.id.myOppertunity_title);
+				convertView = mInflater.inflate(R.layout.list_item_oppertunities,null);
+				//titleTextView = (TextView) convertView.findViewById(R.id.myOppertunity_title);
 				statusTextView = (TextView) convertView.findViewById(R.id.myOppertunity_status);
 				dateTextView = (TextView) convertView.findViewById(R.id.myOppertunity_date);
 		} 

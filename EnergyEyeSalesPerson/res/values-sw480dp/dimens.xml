@@ -23,6 +23,11 @@
 	<dimen name="android_textSize_login">18sp</dimen>
 	
 	
+	<!-- Button dimension -->
+	<dimen name="button_radius">9dp</dimen>
+<dimen name="editText_radius">9dp</dimen>
+	
+	
 	
 	
 	

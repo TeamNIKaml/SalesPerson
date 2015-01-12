@@ -22,7 +22,9 @@
 	<dimen name="android_padding_login">14dp</dimen>
 	<dimen name="android_textSize_login">22sp</dimen>
 	
-	
+	<!-- Button dimension -->
+	<dimen name="button_radius">12dp</dimen>
+	<dimen name="editText_radius">12dp</dimen>
 	
 	
 
