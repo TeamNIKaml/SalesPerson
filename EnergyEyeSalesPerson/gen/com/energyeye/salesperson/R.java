@@ -16,26 +16,19 @@ public final class R {
     public static final class attr {
     }
     public static final class color {
-        public static final int EditTextBackGround=0x7f050002;
-        public static final int EditTextColor=0x7f05000c;
-        public static final int NextOppertunities=0x7f05000e;
-        public static final int ProjectDescription=0x7f05000d;
-        public static final int SpinnerText=0x7f05000f;
         /**  Textcolor 
          */
-        public static final int buttonText=0x7f050009;
-        public static final int button_Background_end=0x7f050006;
-        public static final int button_Background_start=0x7f050005;
-        public static final int editTextBackground_end=0x7f050008;
-        public static final int editTextBackground_start=0x7f050007;
-        public static final int editTextColor=0x7f05000a;
-        public static final int loginBackground=0x7f050000;
-        public static final int loginButton=0x7f050001;
-        public static final int login_Background_end=0x7f050004;
+        public static final int buttonText=0x7f050006;
+        public static final int button_Background_end=0x7f050003;
+        public static final int button_Background_start=0x7f050002;
+        public static final int editTextBackground_end=0x7f050005;
+        public static final int editTextBackground_start=0x7f050004;
+        public static final int editTextColor=0x7f050007;
+        public static final int login_Background_end=0x7f050001;
         /**  Gridview 
          */
-        public static final int login_Background_start=0x7f050003;
-        public static final int textviewColor=0x7f05000b;
+        public static final int login_Background_start=0x7f050000;
+        public static final int textviewColor=0x7f050008;
     }
     public static final class dimen {
         /**  Default screen margins, per the Android Design guidelines. 

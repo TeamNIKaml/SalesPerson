@@ -20,7 +20,7 @@
 
     <EditText
         android:id="@+id/description"
-        android:background="@color/ProjectDescription"
+        android:background="@color/editTextColor"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/projectTitle"
@@ -264,7 +264,7 @@
 
      <Button
          android:id="@+id/nextOpportunities"
-         android:background="@color/NextOppertunities"
+         android:background="@drawable/button_background"
          android:layout_width="wrap_content"
          android:layout_height="wrap_content"
          android:layout_alignRight="@+id/other"
