@@ -57,13 +57,47 @@ public class AddOppertunityDialog  extends DialogFragment {
 				// Positive button
 				.setPositiveButton("Next", new DialogInterface.OnClickListener() {
 					public void onClick(DialogInterface dialog, int which) {
-						// Do something else
+						setOppertunityDataSource();
 					}
+
+					
 				})
  
 				// Negative Button
 				.create();
 	}
+	
+	
+	
+	private void setOppertunityDataSource() {
+		// TODO Auto-generated method stub
+		
+		dataSource.setProjectTitle(projectTitle.getText().toString());
+		dataSource.setProjectDescription(description.getText().toString());
+		dataSource.setContactName(contact.getText().toString());
+		dataSource.setDesignation(designation.getText().toString());
+		dataSource.setAddress1(address1.getText().toString());
+		dataSource.setAddress2(address2.getText().toString());
+		dataSource.setCounty(county.getText().toString());
+		dataSource.setCity(city.getText().toString());
+		dataSource.setCompCode(compcode.getText().toString());
+		dataSource.setPostCode(postcode.getText().toString());
+		dataSource.setDayPhone(dayphone.getText().toString());
+		 dataSource.setEmailId(email.getText().toString());
+		 dataSource.setEveningPhone(eveningphone.getText().toString());
+		 dataSource.setOther(other.getText().toString());
+		 dataSource.setPropertyType(property_type.getSelectedItem().toString());
+		 dataSource.setModuleType(module_type.getSelectedItem().toString());
+		 dataSource.setCountry(country.getSelectedItem().toString());
+		 
+		 
+		  
+		
+		
+		
+	}
+	
+	
 
 	private void initDialog(View v) {
 		// TODO Auto-generated method stub

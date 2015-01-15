@@ -80,12 +80,18 @@ public final class R {
         public static final int button_background=0x7f020002;
         public static final int edit_text_background=0x7f020003;
         public static final int ic_launcher=0x7f020004;
-        public static final int oppertunities=0x7f020005;
-        public static final int settings=0x7f020006;
-        public static final int task=0x7f020007;
+        public static final int login_background_plain=0x7f020005;
+        public static final int login_background_with_gradiant=0x7f020006;
+        public static final int login_btn_bg=0x7f020007;
+        public static final int logo=0x7f020008;
+        public static final int oppertunities=0x7f020009;
+        public static final int password=0x7f02000a;
+        public static final int settings=0x7f02000b;
+        public static final int task=0x7f02000c;
+        public static final int username=0x7f02000d;
     }
     public static final class id {
-        public static final int action_settings=0x7f0a0026;
+        public static final int action_settings=0x7f0a0025;
         public static final int addButton=0x7f0a0022;
         public static final int address1=0x7f0a000a;
         public static final int address2=0x7f0a000b;
@@ -109,7 +115,7 @@ public final class R {
         public static final int linearLayout5=0x7f0a000f;
         public static final int linearLayout6=0x7f0a0013;
         public static final int loginButton=0x7f0a001a;
-        public static final int logout=0x7f0a0025;
+        public static final int logout=0x7f0a0024;
         public static final int modulespinner=0x7f0a0004;
         public static final int myOppertunity_date=0x7f0a0021;
         public static final int myOppertunity_status=0x7f0a0020;
@@ -123,7 +129,6 @@ public final class R {
         public static final int propertyspinner=0x7f0a0003;
         public static final int save=0x7f0a001e;
         public static final int signature=0x7f0a001c;
-        public static final int textView=0x7f0a0024;
     }
     public static final class layout {
         public static final int activity_add_opertunities_old=0x7f030000;

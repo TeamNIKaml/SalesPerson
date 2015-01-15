@@ -7,6 +7,7 @@ import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
+
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.ClientProtocolException;
@@ -17,16 +18,15 @@ import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import com.energyeye.salesperson.activity.LoginActivity;
-import com.energyeye.salesperson.properties.Constants;
-import com.energyeye.salesperson.properties.SalesPerson;
-
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.AsyncTask;
 import android.util.Log;
+
+import com.energyeye.salesperson.properties.Constants;
+import com.energyeye.salesperson.properties.SalesPerson;
 
 
 
@@ -101,12 +101,7 @@ public class LoginService {
 
 	private class Loginwebservice extends AsyncTask<String, Integer, String> {
 
-		@Override
-		protected void onProgressUpdate(Integer... values) {
 		
-			// TODO Auto-generated method stub
-			super.onProgressUpdate(values);
-		}
 
 		@Override
 		protected void onPostExecute(String result) {

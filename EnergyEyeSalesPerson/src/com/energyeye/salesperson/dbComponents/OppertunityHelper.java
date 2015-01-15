@@ -19,7 +19,7 @@ public class OppertunityHelper implements IDBHelper{
 	
 	@Override
 	public boolean onCreate() {
-		 dbHelper = new DBHelper(dataSource.getContext(), 1, Constants.DB_NAME, Constants.OPPERTUNITIES_DB_QUERY);
+		 dbHelper = new DBHelper(dataSource.getContext(), 1, Constants.DB_NAME, Constants.OPPERTUNITIES_CREATE_QUERY);
 		  return true;
 		
 	}

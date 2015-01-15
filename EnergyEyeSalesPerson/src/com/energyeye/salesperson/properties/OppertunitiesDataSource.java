@@ -36,9 +36,31 @@ public class OppertunitiesDataSource {
 	private String[] projection;
 	private static OppertunitiesDataSource oppertunitiesDataSource;
 	private String sortOrder;
+	private String latitude;
+	private String longitute;
 	
 	
 	
+	public String getLatitude() {
+		return latitude;
+	}
+
+
+	public void setLatitude(String latitude) {
+		this.latitude = latitude;
+	}
+
+
+	public String getLongitute() {
+		return longitute;
+	}
+
+
+	public void setLongitute(String longitute) {
+		this.longitute = longitute;
+	}
+
+
 	public String getStatus() {
 		return status;
 	}

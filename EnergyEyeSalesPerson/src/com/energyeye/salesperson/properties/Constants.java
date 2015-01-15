@@ -8,7 +8,7 @@ public class Constants {
 	public static final String OPPERTUNITIES_URL ="http://10.0.2.2:8080/EnergyEye/Service/OppertunitiesService.php";
 	public static final String DB_NAME ="energyEye.db";
 	public static final String OPPERTUNITIES_TABLE_NAME ="oppertunities";
-	public static final String OPPERTUNITIES_DB_QUERY ="CREATE TABLE IF NOT EXISTS "+Constants.OPPERTUNITIES_TABLE_NAME+ " (" +
+	public static final String OPPERTUNITIES_CREATE_QUERY ="CREATE TABLE IF NOT EXISTS "+Constants.OPPERTUNITIES_TABLE_NAME+ " (" +
 			"_id INTEGER PRIMARY KEY AUTOINCREMENT  NOT NULL," +
 			"projectTitle TEXT," +
 			"projectDescription TEXT," +
@@ -27,7 +27,27 @@ public class Constants {
 			"dayPhone TEXT," +
 			"eveningPhone TEXT," +
 			"other TEXT," +
-			"status TEXT )";	
+			"status TEXT, " +
+			"latitude TEXT ," +
+			"longitude TEXT)";	
+	
+	public static final String CUSTOMER_INFOEMATION_TABLE_NAME = "customerInformation";
+	public static final String CUSTOMER_INFORMATION_CREATE_QUERY="CREATE TABLE IF NOT EXISTS "+Constants.CUSTOMER_INFOEMATION_TABLE_NAME+ " (" +
+			"_id INTEGER PRIMARY KEY AUTOINCREMENT  NOT NULL," +
+			"mpan TEXT," +
+			"supplier TEXT," +
+			"dnoCompany TEXT," +
+			"electricityRate TEXT," +
+			"roiMethod TEXT," +
+			"monitorInstallation TEXT," +
+			"showCustomerContribution TEXT," +
+			"roofType TEXT," +
+			"meterReadinfForFit TEXT," +
+			"yieldMethod TEXT," +
+			"ProjectImplementationtype TEXT," +
+			"other TEXT)";	
+
+			
 	private Constants()	{}	
 
 }

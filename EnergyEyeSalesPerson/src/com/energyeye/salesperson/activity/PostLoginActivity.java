@@ -8,15 +8,22 @@ import com.energyeye.salesperson.activityComponents.TabPagerAdapter;
 
 import android.app.ActionBar;
 import android.app.FragmentTransaction;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 
 
 public class PostLoginActivity  extends FragmentActivity {
-	ViewPager Tab;
-    TabPagerAdapter TabAdapter;
-	ActionBar actionBar;
+	private SharedPreferences pref;
+	private Editor editor;
+	private ViewPager Tab;
+	private TabPagerAdapter TabAdapter;
+	private ActionBar actionBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,6 +73,39 @@ public class PostLoginActivity  extends FragmentActivity {
 			actionBar.addTab(actionBar.newTab().setText("Personal Settings").setTabListener(tabListener));
 
     }
+
+    
+    @Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// Inflate the menu; this adds items to the action bar if it is present.
+		getMenuInflater().inflate(R.menu.postlogin, menu);
+		return true;
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		
+		writeSharedPreference();	
+		  finish();
+		
+			return super.onOptionsItemSelected(item);
+		
+	}
+	
+	private void writeSharedPreference() {
+		// TODO Auto-generated method stub
+		
+		pref = getApplicationContext().getSharedPreferences(
+				"localdiskchildlocator", 0);
+		editor = pref.edit();
+		Log.e("writeToSharedPreferences Logout", "localdiskchildlocator");
+		//editor.putString("userKey", user.getUserKey());
+		//editor.putString("emailID", user.getEmailId());
+		//editor.putString("password", user.getPassword());
+		editor.putInt("loginstatus", 0);		
+		editor.commit();	
+		
+	}
 
 
 

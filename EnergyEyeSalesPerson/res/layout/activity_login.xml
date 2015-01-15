@@ -2,7 +2,7 @@
 <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background_image" 
+    android:background="@drawable/login_background_with_gradiant" 
      android:shrinkColumns="*"  android:stretchColumns="*">
     
 
@@ -20,7 +20,9 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/layout_marginLeft_login"
             android:layout_marginRight="@dimen/layout_marginRight_login"
-            android:background="@drawable/edit_text_background"
+            android:background="@drawable/username"
+            android:ellipsize="start"
+   			android:gravity="center_horizontal"
             android:hint="@string/email"
             android:inputType="textEmailAddress"
             android:padding="@dimen/android_padding_login"
@@ -45,9 +47,11 @@
                                 android:inputType="textPassword"                               
                                 android:layout_marginRight="@dimen/layout_marginRight_login"
                                 android:layout_marginLeft="@dimen/layout_marginLeft_login"
+                                 android:ellipsize="start"
+   								android:gravity="center_horizontal"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:background="@drawable/edit_text_background"
+                                android:background="@drawable/password"
                                 android:hint="@string/pass"
                                 android:padding="@dimen/android_padding_login"
                                 android:textColor="@color/editTextColor"
@@ -65,7 +69,7 @@
 						    
 					        <Button
 						         android:id="@+id/loginButton"
-						         android:background="@drawable/button_background"
+						         android:background="@drawable/login_btn_bg"
 						         android:layout_width="wrap_content"
 						         android:layout_height="wrap_content"
 						         android:layout_marginLeft="@dimen/layout_marginLeft_loginbutton"
