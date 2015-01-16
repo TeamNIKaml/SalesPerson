@@ -7,7 +7,11 @@ import com.energyeye.salesperson.R;
 import com.energyeye.salesperson.dbComponents.IDBHelper;
 import com.energyeye.salesperson.dbComponents.OppertunityHelper;
 import com.energyeye.salesperson.properties.OppertunitiesDataSource;
+import com.energyeye.salesperson.webservice.MyOppertunitiesService;
+import com.energyeye.salesperson.webservice.TaskService;
+
 import android.annotation.SuppressLint;
+import android.app.ActionBar;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -38,93 +42,102 @@ public class TestActivity extends Activity {
 	private ArrayAdapter<String> propertyTypeAdaptor,moduleTypeAdaptor,countryAdaptor;
 	private IDBHelper helper = new OppertunityHelper();
 	
-	 @SuppressLint("InflateParams")
+/*	@SuppressLint("InflateParams")
 	@Override
-		@Deprecated
-		protected Dialog onCreateDialog(int id) {
-			// TODO Auto-generated method stub
-	    	Dialog dlg = null;
-	    	AlertDialog.Builder builder = new AlertDialog.Builder(this);
-	    	
-	    	LayoutInflater li = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-	    	 v =li.inflate(R.layout.activity_add_opertunities_old, null);	   	
-	    	 initDialog(v);
-	    	 setDialogData();
-	    	
-	    	dlg = builder.setView(v)
-	    			.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-						
-						@Override
-						public void onClick(DialogInterface dialog, int which) {
-							// TODO Auto-generated method stub
-							
-						}
-					})
-	    			.create();
-			return dlg;
-		}
+	@Deprecated
+	protected Dialog onCreateDialog(int id) {
+		// TODO Auto-generated method stub
+		Dialog dlg = null;
+		AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+		LayoutInflater li = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+		v = li.inflate(R.layout.activity_add_opertunities_old, null);
+		initDialog(v);
+		setDialogData();
+
+		dlg = builder.setView(v)
+				.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+
+					@Override
+					public void onClick(DialogInterface dialog, int which) {
+						// TODO Auto-generated method stub
+
+					}
+				}).create();
+		return dlg;
+	}
 
 	private void setDialogData() {
 		// TODO Auto-generated method stub
-		 projectTitle.setText(dataSource.getProjectTitle());
-		  description.setText(dataSource.getDesignation());
-		  contact.setText(dataSource.getContactName());
-		  designation.setText(dataSource.getDesignation());
-		  address1.setText(dataSource.getAddress1());
-		  address2.setText(dataSource.getAddress2());
-		  county.setText(dataSource.getCounty());
-		  city.setText(dataSource.getCity());
-		  compcode.setText(dataSource.getCompCode());
-		  postcode.setText(dataSource.getPostCode());
-		  dayphone.setText(dataSource.getDayPhone());
-		  email.setText(dataSource.getEmailId());
-		  eveningphone.setText(dataSource.getEveningPhone());
-		  other.setText(dataSource.getOther());
-		 propertyTypeList.add(dataSource.getPropertyType());
-		  moduleTypeList.add(dataSource.getModuleType());
-		  countryList.add(dataSource.getCountry());
-		/*  propertyTypeAdaptor = new ArrayAdapter<String>(getApplicationContext(),
-				  R.layout.spinnertext, propertyTypeList);
-		  moduleTypeAdaptor = new ArrayAdapter<String>(getApplicationContext(),
-		            R.layout.spinnertext, moduleTypeList);
-		  countryAdaptor = new ArrayAdapter<String>(getApplicationContext(),
-				  R.layout.spinnertext, countryList);*/
-		 property_type.setAdapter(propertyTypeAdaptor);
-		  module_type.setAdapter(moduleTypeAdaptor);
-		 country.setAdapter(countryAdaptor);
+		projectTitle.setText(dataSource.getProjectTitle());
+		description.setText(dataSource.getDesignation());
+		contact.setText(dataSource.getContactName());
+		designation.setText(dataSource.getDesignation());
+		address1.setText(dataSource.getAddress1());
+		address2.setText(dataSource.getAddress2());
+		county.setText(dataSource.getCounty());
+		city.setText(dataSource.getCity());
+		compcode.setText(dataSource.getCompCode());
+		postcode.setText(dataSource.getPostCode());
+		dayphone.setText(dataSource.getDayPhone());
+		email.setText(dataSource.getEmailId());
+		eveningphone.setText(dataSource.getEveningPhone());
+		other.setText(dataSource.getOther());
+		propertyTypeList.add(dataSource.getPropertyType());
+		moduleTypeList.add(dataSource.getModuleType());
+		countryList.add(dataSource.getCountry());
 		
+		 * propertyTypeAdaptor = new
+		 * ArrayAdapter<String>(getApplicationContext(), R.layout.spinnertext,
+		 * propertyTypeList); moduleTypeAdaptor = new
+		 * ArrayAdapter<String>(getApplicationContext(), R.layout.spinnertext,
+		 * moduleTypeList); countryAdaptor = new
+		 * ArrayAdapter<String>(getApplicationContext(), R.layout.spinnertext,
+		 * countryList);
+		 
+		property_type.setAdapter(propertyTypeAdaptor);
+		module_type.setAdapter(moduleTypeAdaptor);
+		country.setAdapter(countryAdaptor);
+
 	}
 
 	private void initDialog(View v) {
 		// TODO Auto-generated method stub
-		  projectTitle =(EditText) v.findViewById(R.id.projectTitle);
-		  description =(EditText)v.findViewById(R.id.description);
-		  contact =(EditText)v.findViewById(R.id.contact);
-		  designation = (EditText)v.findViewById(R.id.designation); 
-		  address1 = (EditText) v.findViewById(R.id.address1);
-		  address2 = (EditText) v.findViewById(R.id.address2);
-		  county = (EditText) v.findViewById(R.id.county);
-		  city = (EditText) v.findViewById(R.id.city);
-		  compcode = (EditText) v.findViewById(R.id.compcode);
-		  postcode = (EditText) v.findViewById(R.id.postcode);
-		  dayphone = (EditText) v.findViewById(R.id.dayphone);
-		  email = (EditText) v.findViewById(R.id.emailOppertunities);
-		  eveningphone = (EditText) v.findViewById(R.id.eveningphone);
-		  other =	(EditText) v.findViewById(R.id.other);
-		  property_type = (Spinner) v.findViewById(R.id.propertyspinner);
-		  module_type = (Spinner) v.findViewById(R.id.modulespinner);
-		  country = (Spinner) v.findViewById(R.id.countryspinner);		
-		  propertyTypeList = new ArrayList<String>();
-		  moduleTypeList = new ArrayList<String>();
-		  countryList = new ArrayList<String>();
-	}
+		projectTitle = (EditText) v.findViewById(R.id.projectTitle);
+		description = (EditText) v.findViewById(R.id.description);
+		contact = (EditText) v.findViewById(R.id.contact);
+		designation = (EditText) v.findViewById(R.id.designation);
+		address1 = (EditText) v.findViewById(R.id.address1);
+		address2 = (EditText) v.findViewById(R.id.address2);
+		county = (EditText) v.findViewById(R.id.county);
+		city = (EditText) v.findViewById(R.id.city);
+		compcode = (EditText) v.findViewById(R.id.compcode);
+		postcode = (EditText) v.findViewById(R.id.postcode);
+		dayphone = (EditText) v.findViewById(R.id.dayphone);
+		email = (EditText) v.findViewById(R.id.emailOppertunities);
+		eveningphone = (EditText) v.findViewById(R.id.eveningphone);
+		other = (EditText) v.findViewById(R.id.other);
+		property_type = (Spinner) v.findViewById(R.id.propertyspinner);
+		module_type = (Spinner) v.findViewById(R.id.modulespinner);
+		country = (Spinner) v.findViewById(R.id.countryspinner);
+		propertyTypeList = new ArrayList<String>();
+		moduleTypeList = new ArrayList<String>();
+		countryList = new ArrayList<String>();
+	}*/
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_login);
-		Intent intent = new Intent(this,SignatureActivity.class);
-		startActivity(intent);
+		setContentView(R.layout.activity_test);
+		ActionBar actionBar = getActionBar();
+		actionBar.hide();
+		
+	//	MyOppertunitiesService myService = new MyOppertunitiesService(this);
+	//	myService.getMyOpperTunities();
+		TaskService service = new TaskService(this);
+		service.getTask();
+		//Intent intent = new Intent(this,SignatureActivity.class);
+		//startActivity(intent);
 	
 		
 		
@@ -132,7 +145,7 @@ public class TestActivity extends Activity {
 		update =(Button) findViewById(R.id.update);
 		delete =(Button) findViewById(R.id.delete);
 		select =(Button) findViewById(R.id.select);*/
-		dataSource = OppertunitiesDataSource.getOppertunitiesDataSource();
+		/*dataSource = OppertunitiesDataSource.getOppertunitiesDataSource();
 		dataSource.setContext(this);
 		setOpppertunities("1");
 		
@@ -186,12 +199,12 @@ public class TestActivity extends Activity {
 			}
 
 			
-		});
+		});*/
 		
 		
 	}
 	
-	private void printOppertunityList(List<OppertunitiesDataSource> oppertunitylist) {
+	/*private void printOppertunityList(List<OppertunitiesDataSource> oppertunitylist) {
 		// TODO Auto-generated method stub
 		int count = oppertunitylist.size();	
 		 for(OppertunitiesDataSource oppertunities : oppertunitylist)
@@ -227,7 +240,7 @@ public class TestActivity extends Activity {
 		dataSource.setOther("Other"+i);
 		dataSource.setOther("Status"+i);
 		
-	}
+	}*/
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {

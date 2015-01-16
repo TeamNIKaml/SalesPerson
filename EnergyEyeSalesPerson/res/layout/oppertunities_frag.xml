@@ -2,7 +2,7 @@
 <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="match_parent"
-    android:background="@drawable/background_image" 
+    android:background="@drawable/login_background_with_gradiant" 
      >   
     
 	
@@ -21,7 +21,7 @@
                                     android:layout_height="wrap_content"
                                     android:layout_marginLeft="@dimen/button_radius"
                                     android:layout_marginRight="@dimen/layout_marginRight_login"
-                                    android:background="@drawable/button_background"
+                                    android:background="@drawable/login_btn_bg"
                                      android:padding="@dimen/android_padding_login"
                                     android:text="@string/addOppertuniites"
                                     android:textColor="@color/buttonText"

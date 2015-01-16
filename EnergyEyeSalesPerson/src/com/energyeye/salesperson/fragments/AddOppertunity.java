@@ -10,14 +10,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ListView;
 import android.widget.Spinner;
 
 import com.energyeye.salesperson.R;
 import com.energyeye.salesperson.properties.OppertunitiesDataSource;
-import com.energyeye.salesperson.webservice.OppertunityService;
+
 
 public class AddOppertunity extends Fragment {
 	
@@ -30,8 +28,8 @@ public class AddOppertunity extends Fragment {
     private Spinner property_type,module_type,country;
 	private List<String> propertyTypeList,moduleTypeList,countryList;
 	private ArrayAdapter<String> propertyTypeAdaptor,moduleTypeAdaptor,countryAdaptor;
-	private OppertunityService service = new OppertunityService(getActivity().getApplicationContext());
-	private List<OppertunitiesDataSource> oppertunitieslist = new ArrayList<OppertunitiesDataSource>();	
+	//private OppertunityService service = new OppertunityService(getActivity().getApplicationContext());
+	//private List<OppertunitiesDataSource> oppertunitieslist = new ArrayList<OppertunitiesDataSource>();	
 	
 	
 

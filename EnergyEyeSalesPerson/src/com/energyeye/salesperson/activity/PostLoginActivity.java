@@ -10,6 +10,7 @@ import android.app.ActionBar;
 import android.app.FragmentTransaction;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
@@ -30,9 +31,13 @@ public class PostLoginActivity  extends FragmentActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_post_login);
         
+      //  ActionBar actionBar1 = getActionBar();
+		//actionBar1.hide();
+        
         TabAdapter = new TabPagerAdapter(getSupportFragmentManager());
         
         Tab = (ViewPager)findViewById(R.id.pager);
+        Tab.setBackground(getResources().getDrawable(R.drawable.login_btn_bg));
         Tab.setOnPageChangeListener(
                 new ViewPager.SimpleOnPageChangeListener() {
                     @Override
@@ -68,9 +73,33 @@ public class PostLoginActivity  extends FragmentActivity {
 				
 			}};
 			//Add New Tab
-			actionBar.addTab(actionBar.newTab().setText("Task").setTabListener(tabListener));
-			actionBar.addTab(actionBar.newTab().setText("Oppertunities").setTabListener(tabListener));
-			actionBar.addTab(actionBar.newTab().setText("Personal Settings").setTabListener(tabListener));
+			//actionBar.setBackgroundDrawable(arg0)
+			android.app.ActionBar.Tab task = actionBar.newTab();
+			task.setIcon(R.drawable.task_normal);
+			//task.set
+			task.setTabListener(tabListener);
+			
+			
+			android.app.ActionBar.Tab oppertunities = actionBar.newTab();
+			oppertunities.setIcon(R.drawable.oppertunity_normal);
+			oppertunities.setTabListener(tabListener);
+			
+			android.app.ActionBar.Tab settings = actionBar.newTab();
+			settings.setIcon(R.drawable.profile_normal);
+			settings.setTabListener(tabListener);
+			
+			
+			actionBar.setBackgroundDrawable(getResources().getDrawable(R.drawable.login_btn_bg));
+			
+			//actionBar.setCustomView(arg0);
+			
+			actionBar.addTab(task);
+			actionBar.addTab(oppertunities);
+			actionBar.addTab(settings);
+			
+		//	actionBar.addTab(actionBar.newTab().setText("Task").setTabListener(tabListener));
+		//	actionBar.addTab(actionBar.newTab().setText("Oppertunities").setTabListener(tabListener));
+		//	actionBar.addTab(actionBar.newTab().setText("Personal Settings").setTabListener(tabListener));
 
     }
 

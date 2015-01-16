@@ -85,14 +85,18 @@ public final class R {
         public static final int login_btn_bg=0x7f020007;
         public static final int logo=0x7f020008;
         public static final int oppertunities=0x7f020009;
-        public static final int password=0x7f02000a;
-        public static final int settings=0x7f02000b;
-        public static final int task=0x7f02000c;
-        public static final int username=0x7f02000d;
+        public static final int oppertunity_normal=0x7f02000a;
+        public static final int password=0x7f02000b;
+        public static final int preposal_normal=0x7f02000c;
+        public static final int profile_normal=0x7f02000d;
+        public static final int settings=0x7f02000e;
+        public static final int task=0x7f02000f;
+        public static final int task_normal=0x7f020010;
+        public static final int username=0x7f020011;
     }
     public static final class id {
-        public static final int action_settings=0x7f0a0025;
-        public static final int addButton=0x7f0a0022;
+        public static final int action_settings=0x7f0a0029;
+        public static final int addButton=0x7f0a0026;
         public static final int address1=0x7f0a000a;
         public static final int address2=0x7f0a000b;
         public static final int city=0x7f0a000e;
@@ -102,12 +106,14 @@ public final class R {
         public static final int countryspinner=0x7f0a0005;
         public static final int county=0x7f0a000d;
         public static final int dayphone=0x7f0a0012;
+        public static final int delete=0x7f0a0021;
         public static final int description=0x7f0a0001;
         public static final int designation=0x7f0a0008;
         public static final int email=0x7f0a0018;
         public static final int emailOppertunities=0x7f0a0014;
         public static final int eveningphone=0x7f0a0015;
-        public static final int lblListHeader=0x7f0a001f;
+        public static final int insert=0x7f0a001f;
+        public static final int lblListHeader=0x7f0a0023;
         public static final int linearLayout1=0x7f0a0002;
         public static final int linearLayout2=0x7f0a0006;
         public static final int linearLayout3=0x7f0a0009;
@@ -115,12 +121,12 @@ public final class R {
         public static final int linearLayout5=0x7f0a000f;
         public static final int linearLayout6=0x7f0a0013;
         public static final int loginButton=0x7f0a001a;
-        public static final int logout=0x7f0a0024;
+        public static final int logout=0x7f0a0028;
         public static final int modulespinner=0x7f0a0004;
-        public static final int myOppertunity_date=0x7f0a0021;
-        public static final int myOppertunity_status=0x7f0a0020;
+        public static final int myOppertunity_date=0x7f0a0025;
+        public static final int myOppertunity_status=0x7f0a0024;
         public static final int nextOpportunities=0x7f0a0017;
-        public static final int oppertunitiesList=0x7f0a0023;
+        public static final int oppertunitiesList=0x7f0a0027;
         public static final int other=0x7f0a0016;
         public static final int pager=0x7f0a001b;
         public static final int password=0x7f0a0019;
@@ -128,19 +134,22 @@ public final class R {
         public static final int projectTitle=0x7f0a0000;
         public static final int propertyspinner=0x7f0a0003;
         public static final int save=0x7f0a001e;
+        public static final int select=0x7f0a0022;
         public static final int signature=0x7f0a001c;
+        public static final int update=0x7f0a0020;
     }
     public static final class layout {
         public static final int activity_add_opertunities_old=0x7f030000;
         public static final int activity_login=0x7f030001;
         public static final int activity_post_login=0x7f030002;
         public static final int activity_signature=0x7f030003;
-        public static final int list_group_oppertunities=0x7f030004;
-        public static final int list_item_oppertunities=0x7f030005;
-        public static final int oppertunities_frag=0x7f030006;
-        public static final int settings_frag=0x7f030007;
-        public static final int spinnertext=0x7f030008;
-        public static final int task_frag=0x7f030009;
+        public static final int activity_test=0x7f030004;
+        public static final int list_group_oppertunities=0x7f030005;
+        public static final int list_item_oppertunities=0x7f030006;
+        public static final int oppertunities_frag=0x7f030007;
+        public static final int settings_frag=0x7f030008;
+        public static final int spinnertext=0x7f030009;
+        public static final int task_frag=0x7f03000a;
     }
     public static final class menu {
         public static final int postlogin=0x7f090000;
