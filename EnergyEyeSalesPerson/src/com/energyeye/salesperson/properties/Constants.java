@@ -3,7 +3,10 @@ package com.energyeye.salesperson.properties;
 public class Constants {
 	
 	public static final String EMAIL_ID_PASSWORD_INVALID = "Invalid Username or Password";
+	public static final String WEB_SERVICE_ERROR = "500 WEBSERVICE ERROR";
 	public static final String LOGIN_URL = "http://10.0.2.2:8080/EnergyEye/Service/LoginService.php";
+	public static final String TASK_URL = "http://10.0.2.2:8080/EnergyEye/Service/TaskService.php";
+	public static final String MYOPPERTUNITIES_URL = "http://10.0.2.2:8080/EnergyEye/Service/MyOppertunitiesService.php";
 	public static final String UPLOAD_URL ="http://10.0.2.2:8080/EnergyEye/Service/FileUploadService.php";
 	public static final String OPPERTUNITIES_URL ="http://10.0.2.2:8080/EnergyEye/Service/OppertunitiesService.php";
 	public static final String DB_NAME ="energyEye.db";

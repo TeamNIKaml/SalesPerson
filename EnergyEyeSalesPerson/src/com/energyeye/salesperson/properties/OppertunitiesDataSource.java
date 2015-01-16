@@ -99,7 +99,7 @@ public class OppertunitiesDataSource {
 	public String toString() {
 		// TODO Auto-generated method stub
 		
-		return  "\n\n\n projectTitle : " +getProjectTitle() +"\n"+
+		return  "\n projectTitle : " +getProjectTitle() +"\n"+
 				"projectDescription : " + getProjectDescription() + "\n" +
 				"propertyType : " + getPropertyType() +"\n" +
 				"moduleType : " +getModuleType() + " \n" +
@@ -115,7 +115,10 @@ public class OppertunitiesDataSource {
 				"dayPhone : "  +getDayPhone() +"\n" +
 				"eveningPhone : " +getEveningPhone() + "\n" +
 				"other : " + getOther()+"\n" +
-						"status :"+getStatus() ;
+						"status :"+getStatus() +
+				"\nlatitude :"+getLatitude()+
+				"\nlongitute :"+getLongitute();	
+		
 		
 		
 	}
@@ -141,13 +144,12 @@ public static void setOppertunitiesDataSource(OppertunitiesDataSource oppertunit
 		
 			
 		oppertunitiesDataSource = oppertunitiesDataSource1;
-	}
-	
-	
+	}	
 	
 	public String getProjectTitle() {
 		return projectTitle;
 	}
+
 	public void setProjectTitle(String projectTitle) {
 		this.projectTitle = projectTitle;
 	}
