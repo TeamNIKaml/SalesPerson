@@ -20,15 +20,13 @@ public class CustomerInformationDataSource {
     private String meterReadinfForFit;
     private String yieldMethod;
     private String ProjectImplementationtype;
+    private String other;
+
     private Context context;
     private String whereClause;
     private String sortOrder;
-
     private String[] whereArgs;
-
     private String[] projection;
-
-    private String other;
 
     private static CustomerInformationDataSource dataSource;
 
@@ -42,17 +40,6 @@ public class CustomerInformationDataSource {
 
     private CustomerInformationDataSource() {
 
-    }
-
-    public CustomerInformationDataSource cursorToCustomerInformationList(
-	    Cursor cursor) {
-	// TODO Auto-generated method stub
-	return null;
-    }
-
-    public ContentValues customerInformationListToContentValue() {
-	// TODO Auto-generated method stub
-	return null;
     }
 
     public Context getContext() {
@@ -198,6 +185,52 @@ public class CustomerInformationDataSource {
     public void setCustomerInformationList(
 	    List<CustomerInformationDataSource> customerInformationList) {
 	this.customerInformationList = customerInformationList;
+    }
+
+    public CustomerInformationDataSource cursorToCustomerInformationList(
+	    Cursor cursor) {
+	final CustomerInformationDataSource customerInformationDataSource = new CustomerInformationDataSource();
+	// TODO Auto-generated method stub
+
+	customerInformationDataSource.setMpan(cursor.getString(1));
+	customerInformationDataSource.setSupplier(cursor.getString(2));
+	customerInformationDataSource.setDnoCompany(cursor.getString(3));
+	customerInformationDataSource.setElectricityRate(cursor.getString(4));
+	customerInformationDataSource.setRoiMethod(cursor.getString(5));
+	customerInformationDataSource.setMonitorInstallation(cursor
+		.getString(6));
+	customerInformationDataSource.setShowCustomerContribution(cursor
+		.getString(7));
+	customerInformationDataSource.setRoofType(cursor.getString(8));
+	customerInformationDataSource
+		.setMeterReadinfForFit(cursor.getString(9));
+	customerInformationDataSource.setYieldMethod(cursor.getString(10));
+	customerInformationDataSource.setProjectImplementationtype(cursor
+		.getString(11));
+	customerInformationDataSource.setOther(cursor.getString(12));
+
+	return customerInformationDataSource;
+    }
+
+    public ContentValues customerInformationListToContentValue() {
+	// TODO Auto-generated method stub
+
+	final ContentValues values = new ContentValues();
+
+	values.put("mpan", getMpan());
+	values.put("supplier", getSupplier());
+	values.put("dnoCompany", getDnoCompany());
+	values.put("electricityRate", getElectricityRate());
+	values.put("roiMethod", getRoiMethod());
+	values.put("monitorInstallation", getMonitorInstallation());
+	values.put("showCustomerContribution", getShowCustomerContribution());
+	values.put("roofType", getRoofType());
+	values.put("meterReadinfForFit", getMeterReadinfForFit());
+	values.put("yieldMethod", getYieldMethod());
+	values.put("ProjectImplementationtype", getProjectImplementationtype());
+	values.put("other", getOther());
+
+	return values;
     }
 
 }

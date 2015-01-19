@@ -49,7 +49,8 @@ public class Constants {
 	    + "roofType TEXT,"
 	    + "meterReadinfForFit TEXT,"
 	    + "yieldMethod TEXT,"
-	    + "ProjectImplementationtype TEXT," + "other TEXT)";
+	    + "ProjectImplementationtype TEXT,"
+	    + "other TEXT)";
 
     private Constants() {
     }
