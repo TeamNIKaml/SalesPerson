@@ -3,20 +3,19 @@ package com.energyeye.salesperson.activity;
 
 
 
-import com.energyeye.salesperson.R;
-import com.energyeye.salesperson.activityComponents.TabPagerAdapter;
-
 import android.app.ActionBar;
 import android.app.FragmentTransaction;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import com.energyeye.salesperson.R;
+import com.energyeye.salesperson.activityComponents.TabPagerAdapter;
 
 
 public class PostLoginActivity  extends FragmentActivity {
@@ -57,6 +56,7 @@ public class PostLoginActivity  extends FragmentActivity {
 			public void onTabReselected(android.app.ActionBar.Tab tab,
 					FragmentTransaction ft) {
 				// TODO Auto-generated method stub
+				 Tab.setBackground(getResources().getDrawable(R.drawable.login_btn_bg));
 				
 			}
 
@@ -64,12 +64,14 @@ public class PostLoginActivity  extends FragmentActivity {
 			 public void onTabSelected(ActionBar.Tab tab, FragmentTransaction ft) {
 	          
 	            Tab.setCurrentItem(tab.getPosition());
+	            Tab.setBackground(getResources().getDrawable(R.drawable.login_background_with_gradiant));
 	        }
 
 			@Override
 			public void onTabUnselected(android.app.ActionBar.Tab tab,
 					FragmentTransaction ft) {
 				// TODO Auto-generated method stub
+				 Tab.setBackground(getResources().getDrawable(R.drawable.login_background_plain));
 				
 			}};
 			//Add New Tab

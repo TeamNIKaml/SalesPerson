@@ -7,7 +7,6 @@ import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
-
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.ClientProtocolException;
@@ -17,144 +16,91 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONException;
 import org.json.JSONObject;
-
+import com.energyeye.salesperson.properties.Constants;
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
 import android.os.AsyncTask;
 import android.util.Log;
 
-import com.energyeye.salesperson.properties.Constants;
-import com.energyeye.salesperson.properties.SalesPerson;
+public class TaskService {
 
-
-
-
-
-
-public class LoginService {
-
+	private SharedPreferences pref;
 	private static InputStream is = null;
 	private Context context;
-	private static SalesPerson user;
-	private SharedPreferences pref;
-	private Editor editor;
 
-	
-
-	public LoginService(Context context) {
-		this.context = context;
-	}
-	
-	
 	public Context getContext() {
 		return context;
 	}
-
-
-
 
 	public void setContext(Context context) {
 		this.context = context;
 	}
 
+	public TaskService(Context context) {
+		super();
+		this.context = context;
+	}
 
-	public void doLogin() {
+	public void getTask() {
 		Log.e("login Service", "ndfsdf");
-		user = SalesPerson.getUser();
-		
-		new Loginwebservice().execute("login");		
-	
-		
-	}
-	
-	
+		new TaskWebService().execute("login");
 
-	public void postLogin() {
-		
-		
-		writeSharedPreference();
-		Intent intent = new Intent(context, com.energyeye.salesperson.activity.PostLoginActivity.class);
-		//intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);	
-		
-		intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-		context.startActivity(intent);		
-		
-		
-		
-	}
-	
-	private void writeSharedPreference() {
-		// TODO Auto-generated method stub
-		
-		pref = getContext().getSharedPreferences("localdiskchildlocator", 0);
-		editor = pref.edit();
-		Log.e("writeToSharedPreferences", "localdiskchildlocator");
-		editor.putString("userKey", user.getUserKey());
-		editor.putString("emailID", user.getEmailId());
-		editor.putString("password", user.getPassword());
-		editor.putInt("loginstatus", 100);		
-		editor.commit();	
-		
 	}
 
-	private class Loginwebservice extends AsyncTask<String, Integer, String> {
-
-		
+	private class TaskWebService extends AsyncTask<String, Integer, String> {
 
 		@Override
 		protected void onPostExecute(String result) {
-			// TODO Auto-generated method stub
 			super.onPostExecute(result);
-			 int loginStatus = 0;
+			int status = 0;
 			JSONObject json_data;
 			try {
 				json_data = new JSONObject(result);
 				for (int i = 0; i < json_data.length(); i++) {
 
 					if (Integer.parseInt(json_data.getString("status")) == 200) {
-						 loginStatus = 200;
-						user.setUserKey(json_data.getString("userKey"));
-						postLogin();
-						
-						
-					}
-					else
-						loginStatus = Integer.parseInt(json_data.getString("status"));
+						status = 200;
+
+					} else
+						status = Integer
+								.parseInt(json_data.getString("status"));
 				}
 
 			} catch (JSONException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			 if (loginStatus == 200) {
-				    Log.e("Login Sucessful", user.getUserKey());
-				    postLogin();
-				   }else{
-					   	   Log.e("Login error",Constants.EMAIL_ID_PASSWORD_INVALID);		 
-				   }
+			if (status == 200) {
+				Log.e("Task Sucess", "Sucess");
+			} else {
+				Log.e("Task error", Constants.WEB_SERVICE_ERROR);
+			}
 		}
 
 		@Override
 		protected String doInBackground(String... params) {
-			
+
 			String json = "";
 			List<BasicNameValuePair> params1 = new ArrayList<BasicNameValuePair>();
-			params1.add(new BasicNameValuePair("emailId", user.getEmailId()));
-			params1.add(new BasicNameValuePair("password", user.getPassword()));
+			pref = context.getSharedPreferences("localdiskchildlocator", 0);
+			Log.e("Task Wenservice",
+					"LoginStatus: "
+							+ String.valueOf(pref.getInt("loginstatus", 0))
+							+ "\nuserKey: " + pref.getString("userKey", "")
+							+ "\nemailID: " + pref.getString("emailID", "")
+							+ "\nPassword: " + pref.getString("password", ""));
+
+			params1.add(new BasicNameValuePair("userkey", pref.getString(
+					"userKey", "")));
 			params1.add(new BasicNameValuePair("select", "Login"));
-			
 
 			try {
-				
+
 				HttpPost httpPost = null;
-				DefaultHttpClient httpClient = new DefaultHttpClient();				
-				httpPost = new HttpPost(Constants.LOGIN_URL);				
+				DefaultHttpClient httpClient = new DefaultHttpClient();
+				httpPost = new HttpPost(Constants.TASK_URL);
 				httpPost.setEntity(new UrlEncodedFormEntity(params1));
 				HttpResponse httpResponse = httpClient.execute(httpPost);
 				HttpEntity httpEntity = httpResponse.getEntity();
-				
 				is = httpEntity.getContent();
 
 			} catch (UnsupportedEncodingException e) {
@@ -179,9 +125,8 @@ public class LoginService {
 			} catch (Exception e) {
 				Log.e("Buffer Error", "Error converting result " + e.toString());
 			}
-			
 			return json;
 		}
 	}
 
-} 
+}
