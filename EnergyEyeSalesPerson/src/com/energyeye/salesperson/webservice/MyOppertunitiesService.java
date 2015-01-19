@@ -94,7 +94,7 @@ public class MyOppertunitiesService {
 
 			params1.add(new BasicNameValuePair("userkey", pref.getString(
 					"userKey", "")));
-			params1.add(new BasicNameValuePair("select", "Login"));
+			params1.add(new BasicNameValuePair("select", "myOppertunities"));
 
 			try {
 

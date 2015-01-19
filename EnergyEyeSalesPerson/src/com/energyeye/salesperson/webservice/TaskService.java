@@ -42,8 +42,8 @@ public class TaskService {
 	}
 
 	public void getTask() {
-		Log.e("login Service", "ndfsdf");
-		new TaskWebService().execute("login");
+		Log.e("Task Service", "ndfsdf");
+		new TaskWebService().execute("Task");
 
 	}
 
@@ -91,7 +91,7 @@ public class TaskService {
 
 			params1.add(new BasicNameValuePair("userkey", pref.getString(
 					"userKey", "")));
-			params1.add(new BasicNameValuePair("select", "Login"));
+			params1.add(new BasicNameValuePair("select", "Task"));
 
 			try {
 

@@ -32,12 +32,12 @@ public class OppertunitiesDataSource {
 	private Context context;
 	private String whereClause;
 	private String[] whereArgs;
-	private List<OppertunitiesDataSource> oppertunitieslist = new ArrayList<OppertunitiesDataSource>();	
 	private String[] projection;
-	private static OppertunitiesDataSource oppertunitiesDataSource;
 	private String sortOrder;
 	private String latitude;
 	private String longitute;
+	private static OppertunitiesDataSource dataSource;
+	private List<OppertunitiesDataSource> oppertunitieslist = new ArrayList<OppertunitiesDataSource>();	
 	
 	
 	
@@ -134,16 +134,16 @@ public class OppertunitiesDataSource {
 
 	public static OppertunitiesDataSource getOppertunitiesDataSource() {
 		
-		if(oppertunitiesDataSource == null)
-			oppertunitiesDataSource = new OppertunitiesDataSource();		
-		return oppertunitiesDataSource;
+		if(dataSource == null)
+			dataSource = new OppertunitiesDataSource();		
+		return dataSource;
 	}
 	
 	
 public static void setOppertunitiesDataSource(OppertunitiesDataSource oppertunitiesDataSource1) {
 		
 			
-		oppertunitiesDataSource = oppertunitiesDataSource1;
+		dataSource = oppertunitiesDataSource1;
 	}	
 	
 	public String getProjectTitle() {
@@ -282,25 +282,27 @@ public static void setOppertunitiesDataSource(OppertunitiesDataSource oppertunit
 	
 	public OppertunitiesDataSource cursorToOppertunitiesDataSource(Cursor cursor)
 	{
-		setProjectTitle(cursor.getString(1));
-		setProjectDescription(cursor.getString(2));
-		setPropertyType(cursor.getString(3));
-		setModuleType(cursor.getString(4));
-		setCompCode(cursor.getString(5));
-		setContactName(cursor.getString(6));
-		setDesignation(cursor.getString(7));
-		setAddress1(cursor.getString(8));
-		setAddress2(cursor.getString(9));
-		setCity(cursor.getString(10));
-		setCounty(cursor.getString(11));
-		setCountry(cursor.getString(12));
-		setPostCode(cursor.getString(13));
-		setEmailId(cursor.getString(14));
-		setDayPhone(cursor.getString(15));
-		setEveningPhone(cursor.getString(16));
-		setOther(cursor.getString(17));
+		OppertunitiesDataSource oppertunitiesDataSource = new OppertunitiesDataSource();
 		
-		return this;
+		oppertunitiesDataSource.setProjectTitle(cursor.getString(1));
+		oppertunitiesDataSource.setProjectDescription(cursor.getString(2));
+		oppertunitiesDataSource.setPropertyType(cursor.getString(3));
+		oppertunitiesDataSource.setModuleType(cursor.getString(4));
+		oppertunitiesDataSource.setCompCode(cursor.getString(5));
+		oppertunitiesDataSource.setContactName(cursor.getString(6));
+		oppertunitiesDataSource.setDesignation(cursor.getString(7));
+		oppertunitiesDataSource.setAddress1(cursor.getString(8));
+		oppertunitiesDataSource.setAddress2(cursor.getString(9));
+		oppertunitiesDataSource.setCity(cursor.getString(10));
+		oppertunitiesDataSource.setCounty(cursor.getString(11));
+		oppertunitiesDataSource.setCountry(cursor.getString(12));
+		oppertunitiesDataSource.setPostCode(cursor.getString(13));
+		oppertunitiesDataSource.setEmailId(cursor.getString(14));
+		oppertunitiesDataSource.setDayPhone(cursor.getString(15));
+		oppertunitiesDataSource.setEveningPhone(cursor.getString(16));
+		oppertunitiesDataSource.setOther(cursor.getString(17));
+		
+		return oppertunitiesDataSource;
 		
 	}
 	
