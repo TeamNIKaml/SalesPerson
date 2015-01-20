@@ -7,7 +7,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 
-public class CountryDataSource {
+public class DnoCompanyDataSource {
 
     private String name;
     private Context context;
@@ -15,20 +15,20 @@ public class CountryDataSource {
     private String[] whereArgs;
     private String[] projection;
     private String sortOrder;
-    private static CountryDataSource dataSource;
-    private List<CountryDataSource> countryList = new ArrayList<CountryDataSource>();
+    private static DnoCompanyDataSource dataSource;
+    private List<CountryDataSource> dnoCompanyList = new ArrayList<CountryDataSource>();
 
-    public List<CountryDataSource> getCountryTypeList() {
-	return countryList;
+    public List<CountryDataSource> getDnoCompanyList() {
+	return dnoCompanyList;
     }
 
-    public void setCountryTypeList(List<CountryDataSource> countryList) {
-	this.countryList = countryList;
+    public void setDnoCompanyList(List<CountryDataSource> dnoCompanyList) {
+	this.dnoCompanyList = dnoCompanyList;
     }
 
-    public static CountryDataSource getPropertyTypeDataSource() {
+    public static DnoCompanyDataSource getPropertyTypeDataSource() {
 	if (dataSource == null)
-	    dataSource = new CountryDataSource();
+	    dataSource = new DnoCompanyDataSource();
 	return dataSource;
     }
 
@@ -80,7 +80,7 @@ public class CountryDataSource {
 	this.sortOrder = sortOrder;
     }
 
-    public ContentValues countryToContentValues() {
+    public ContentValues DnoCompanyToContentValues() {
 
 	final ContentValues values = new ContentValues();
 	values.put("name", getName());
@@ -88,12 +88,12 @@ public class CountryDataSource {
 	return values;
     }
 
-    public CountryDataSource cursorToCountry(Cursor cursor) {
-	final CountryDataSource countryDataSource = new CountryDataSource();
+    public DnoCompanyDataSource cursorToDnoCompany(Cursor cursor) {
+	final DnoCompanyDataSource dnoCompanyDataSource = new DnoCompanyDataSource();
 
-	countryDataSource.setName(cursor.getString(1));
+	dnoCompanyDataSource.setName(cursor.getString(1));
 
-	return countryDataSource;
+	return dnoCompanyDataSource;
 
     }
 

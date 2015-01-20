@@ -7,7 +7,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 
-public class CountryDataSource {
+public class ElectricalCompanyDataSource {
 
     private String name;
     private Context context;
@@ -15,20 +15,21 @@ public class CountryDataSource {
     private String[] whereArgs;
     private String[] projection;
     private String sortOrder;
-    private static CountryDataSource dataSource;
-    private List<CountryDataSource> countryList = new ArrayList<CountryDataSource>();
+    private static ElectricalCompanyDataSource dataSource;
+    private List<ElectricalCompanyDataSource> electricalCompanyList = new ArrayList<ElectricalCompanyDataSource>();
 
-    public List<CountryDataSource> getCountryTypeList() {
-	return countryList;
+    public List<ElectricalCompanyDataSource> getElectricalCompanyList() {
+	return electricalCompanyList;
     }
 
-    public void setCountryTypeList(List<CountryDataSource> countryList) {
-	this.countryList = countryList;
+    public void setElectricalCompanyList(
+	    List<ElectricalCompanyDataSource> electricalCompanyList) {
+	this.electricalCompanyList = electricalCompanyList;
     }
 
-    public static CountryDataSource getPropertyTypeDataSource() {
+    public static ElectricalCompanyDataSource getPropertyTypeDataSource() {
 	if (dataSource == null)
-	    dataSource = new CountryDataSource();
+	    dataSource = new ElectricalCompanyDataSource();
 	return dataSource;
     }
 
@@ -80,7 +81,7 @@ public class CountryDataSource {
 	this.sortOrder = sortOrder;
     }
 
-    public ContentValues countryToContentValues() {
+    public ContentValues ElectricalCompanyToContentValues() {
 
 	final ContentValues values = new ContentValues();
 	values.put("name", getName());
@@ -88,12 +89,12 @@ public class CountryDataSource {
 	return values;
     }
 
-    public CountryDataSource cursorToCountry(Cursor cursor) {
-	final CountryDataSource countryDataSource = new CountryDataSource();
+    public ElectricalCompanyDataSource cursorToElectricalCompany(Cursor cursor) {
+	final ElectricalCompanyDataSource electricalCompanyDataSource = new ElectricalCompanyDataSource();
 
-	countryDataSource.setName(cursor.getString(1));
+	electricalCompanyDataSource.setName(cursor.getString(1));
 
-	return countryDataSource;
+	return electricalCompanyDataSource;
 
     }
 

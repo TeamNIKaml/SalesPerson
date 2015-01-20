@@ -7,7 +7,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 
-public class CountryDataSource {
+public class YieldMethodDataSource {
 
     private String name;
     private Context context;
@@ -15,20 +15,22 @@ public class CountryDataSource {
     private String[] whereArgs;
     private String[] projection;
     private String sortOrder;
-    private static CountryDataSource dataSource;
-    private List<CountryDataSource> countryList = new ArrayList<CountryDataSource>();
+    private static YieldMethodDataSource dataSource;
+    private  List<YieldMethodDataSource>  yieldMethodList = new ArrayList<YieldMethodDataSource>();
 
-    public List<CountryDataSource> getCountryTypeList() {
-	return countryList;
+   
+
+    public List<YieldMethodDataSource> getYieldMethodList() {
+        return yieldMethodList;
     }
 
-    public void setCountryTypeList(List<CountryDataSource> countryList) {
-	this.countryList = countryList;
+    public void setYieldMethodList(List<YieldMethodDataSource> yieldMethodList) {
+        this.yieldMethodList = yieldMethodList;
     }
 
-    public static CountryDataSource getPropertyTypeDataSource() {
+    public static YieldMethodDataSource getPropertyTypeDataSource() {
 	if (dataSource == null)
-	    dataSource = new CountryDataSource();
+	    dataSource = new YieldMethodDataSource();
 	return dataSource;
     }
 
@@ -80,7 +82,7 @@ public class CountryDataSource {
 	this.sortOrder = sortOrder;
     }
 
-    public ContentValues countryToContentValues() {
+    public ContentValues  yieldMethodToContentValues() {
 
 	final ContentValues values = new ContentValues();
 	values.put("name", getName());
@@ -88,12 +90,12 @@ public class CountryDataSource {
 	return values;
     }
 
-    public CountryDataSource cursorToCountry(Cursor cursor) {
-	final CountryDataSource countryDataSource = new CountryDataSource();
+    public YieldMethodDataSource cursorToYieldMethod(Cursor cursor) {
+	final YieldMethodDataSource yieldMethodDataSource = new YieldMethodDataSource();
 
-	countryDataSource.setName(cursor.getString(1));
+	yieldMethodDataSource.setName(cursor.getString(1));
 
-	return countryDataSource;
+	return yieldMethodDataSource;
 
     }
 

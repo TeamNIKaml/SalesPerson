@@ -7,7 +7,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 
-public class CountryDataSource {
+public class RoofTypeDataSource{
 
     private String name;
     private Context context;
@@ -15,20 +15,22 @@ public class CountryDataSource {
     private String[] whereArgs;
     private String[] projection;
     private String sortOrder;
-    private static CountryDataSource dataSource;
-    private List<CountryDataSource> countryList = new ArrayList<CountryDataSource>();
+    private static RoofTypeDataSource dataSource;
+    private List<RoofTypeDataSource> roofTypeList = new ArrayList<RoofTypeDataSource>();
 
-    public List<CountryDataSource> getCountryTypeList() {
-	return countryList;
+   
+
+    public List<RoofTypeDataSource> getRoofTypeList() {
+        return roofTypeList;
     }
 
-    public void setCountryTypeList(List<CountryDataSource> countryList) {
-	this.countryList = countryList;
+    public void setRoofTypeList(List<RoofTypeDataSource> roofTypeList) {
+        this.roofTypeList = roofTypeList;
     }
 
-    public static CountryDataSource getPropertyTypeDataSource() {
+    public static RoofTypeDataSource getPropertyTypeDataSource() {
 	if (dataSource == null)
-	    dataSource = new CountryDataSource();
+	    dataSource = new RoofTypeDataSource();
 	return dataSource;
     }
 
@@ -80,7 +82,7 @@ public class CountryDataSource {
 	this.sortOrder = sortOrder;
     }
 
-    public ContentValues countryToContentValues() {
+    public ContentValues roofTypeToContentValues() {
 
 	final ContentValues values = new ContentValues();
 	values.put("name", getName());
@@ -88,12 +90,12 @@ public class CountryDataSource {
 	return values;
     }
 
-    public CountryDataSource cursorToCountry(Cursor cursor) {
-	final CountryDataSource countryDataSource = new CountryDataSource();
+    public RoofTypeDataSource cursorToRoofType(Cursor cursor) {
+	final RoofTypeDataSource roofTypeDataSource = new RoofTypeDataSource();
 
-	countryDataSource.setName(cursor.getString(1));
+	roofTypeDataSource.setName(cursor.getString(1));
 
-	return countryDataSource;
+	return roofTypeDataSource;
 
     }
 

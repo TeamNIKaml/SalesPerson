@@ -7,7 +7,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 
-public class CountryDataSource {
+public class ProjectImplementationTypeDataSource {
 
     private String name;
     private Context context;
@@ -15,20 +15,21 @@ public class CountryDataSource {
     private String[] whereArgs;
     private String[] projection;
     private String sortOrder;
-    private static CountryDataSource dataSource;
-    private List<CountryDataSource> countryList = new ArrayList<CountryDataSource>();
+    private static ProjectImplementationTypeDataSource dataSource;
+    private List<ProjectImplementationTypeDataSource> ProjectImplementationList = new ArrayList<ProjectImplementationTypeDataSource>();
 
-    public List<CountryDataSource> getCountryTypeList() {
-	return countryList;
+    public List<ProjectImplementationTypeDataSource> getProjectImplementationList() {
+	return ProjectImplementationList;
     }
 
-    public void setCountryTypeList(List<CountryDataSource> countryList) {
-	this.countryList = countryList;
+    public void setProjectImplementationList(
+	    List<ProjectImplementationTypeDataSource> projectImplementationList) {
+	ProjectImplementationList = projectImplementationList;
     }
 
-    public static CountryDataSource getPropertyTypeDataSource() {
+    public static ProjectImplementationTypeDataSource getPropertyTypeDataSource() {
 	if (dataSource == null)
-	    dataSource = new CountryDataSource();
+	    dataSource = new ProjectImplementationTypeDataSource();
 	return dataSource;
     }
 
@@ -80,7 +81,7 @@ public class CountryDataSource {
 	this.sortOrder = sortOrder;
     }
 
-    public ContentValues countryToContentValues() {
+    public ContentValues projectImplementationToContentValues() {
 
 	final ContentValues values = new ContentValues();
 	values.put("name", getName());
@@ -88,12 +89,13 @@ public class CountryDataSource {
 	return values;
     }
 
-    public CountryDataSource cursorToCountry(Cursor cursor) {
-	final CountryDataSource countryDataSource = new CountryDataSource();
+    public ProjectImplementationTypeDataSource cursorToProjectImplementation(
+	    Cursor cursor) {
+	final ProjectImplementationTypeDataSource projectImplementationTypeDataSource = new ProjectImplementationTypeDataSource();
 
-	countryDataSource.setName(cursor.getString(1));
+	projectImplementationTypeDataSource.setName(cursor.getString(1));
 
-	return countryDataSource;
+	return projectImplementationTypeDataSource;
 
     }
 

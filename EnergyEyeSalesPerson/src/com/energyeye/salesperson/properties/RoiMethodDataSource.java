@@ -7,7 +7,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 
-public class CountryDataSource {
+public class RoiMethodDataSource {
 
     private String name;
     private Context context;
@@ -15,20 +15,22 @@ public class CountryDataSource {
     private String[] whereArgs;
     private String[] projection;
     private String sortOrder;
-    private static CountryDataSource dataSource;
-    private List<CountryDataSource> countryList = new ArrayList<CountryDataSource>();
+    private static RoiMethodDataSource dataSource;
+    private List<RoiMethodDataSource> roiMethodList = new ArrayList<RoiMethodDataSource>();
 
-    public List<CountryDataSource> getCountryTypeList() {
-	return countryList;
+  
+
+    public List<RoiMethodDataSource> getRoiMethodList() {
+        return roiMethodList;
     }
 
-    public void setCountryTypeList(List<CountryDataSource> countryList) {
-	this.countryList = countryList;
+    public void setRoiMethodList(List<RoiMethodDataSource> roiMethodList) {
+        this.roiMethodList = roiMethodList;
     }
 
-    public static CountryDataSource getPropertyTypeDataSource() {
+    public static RoiMethodDataSource getPropertyTypeDataSource() {
 	if (dataSource == null)
-	    dataSource = new CountryDataSource();
+	    dataSource = new RoiMethodDataSource();
 	return dataSource;
     }
 
@@ -80,7 +82,7 @@ public class CountryDataSource {
 	this.sortOrder = sortOrder;
     }
 
-    public ContentValues countryToContentValues() {
+    public ContentValues roiMethodToContentValues() {
 
 	final ContentValues values = new ContentValues();
 	values.put("name", getName());
@@ -88,12 +90,12 @@ public class CountryDataSource {
 	return values;
     }
 
-    public CountryDataSource cursorToCountry(Cursor cursor) {
-	final CountryDataSource countryDataSource = new CountryDataSource();
+    public RoiMethodDataSource cursorToRoiMethod(Cursor cursor) {
+	final RoiMethodDataSource roiMethodDataSource = new RoiMethodDataSource();
 
-	countryDataSource.setName(cursor.getString(1));
+	roiMethodDataSource.setName(cursor.getString(1));
 
-	return countryDataSource;
+	return roiMethodDataSource;
 
     }
 
