@@ -27,98 +27,138 @@ import com.energyeye.salesperson.properties.Constants;
 import com.energyeye.salesperson.properties.OppertunitiesDataSource;
 
 public class AddOppertunityService {
-    private class MyOppertunitiwebservice extends
+
+    private SharedPreferences pref;
+    private static InputStream is = null;
+    private Context context;
+
+    private final OppertunitiesDataSource dataSource = OppertunitiesDataSource
+	    .getOppertunitiesDataSource();
+
+    public AddOppertunityService(Context context) {
+	super();
+	this.context = context;
+    }
+
+    public void addOpperTunities() {
+	Log.e("Add Opppertunity Service", "add Oppertunities");
+	setData();
+	new AddOppertunitiwebservice().execute("addOppertunity");
+
+    }
+
+    private void setData() {
+
+	dataSource.setProjectTitle("title");
+	dataSource.setProjectDescription("Description");
+	dataSource.setPropertyType("propertyType");
+	dataSource.setModuleType("ModuleType");
+	dataSource.setCompCode("compcode");
+	dataSource.setContactName("Contactname");
+	dataSource.setDesignation("Designation");
+	dataSource.setAddress1("Adddress1");
+	dataSource.setAddress2("Address2");
+	dataSource.setCity("City");
+	dataSource.setCounty("County");
+	dataSource.setCountry("Contry");
+	dataSource.setPostCode("Postalcode");
+	dataSource.setEmailId("Email");
+	dataSource.setDayPhone("dayphone");
+	dataSource.setEveningPhone("eveningphone");
+	dataSource.setOther("other");
+	dataSource.setStatus("status");
+	dataSource.setLatitude("latitude");
+	dataSource.setLongitute("longitude");
+
+    }
+
+    public Context getContext() {
+	return context;
+    }
+
+    public void setContext(Context context) {
+	this.context = context;
+    }
+
+    private class AddOppertunitiwebservice extends
 	    AsyncTask<String, Integer, String> {
 
 	@Override
 	protected String doInBackground(String... params) {
 
 	    String json = "";
-	    List<BasicNameValuePair> params1 = new ArrayList<BasicNameValuePair>();
-	    AddOppertunityService.this.pref = AddOppertunityService.this.context
-		    .getSharedPreferences("localdiskchildlocator", 0);
+	    final List<BasicNameValuePair> params1 = new ArrayList<BasicNameValuePair>();
+	    pref = context.getSharedPreferences("localdiskchildlocator", 0);
 	    Log.e("AddOpertunities",
 		    "LoginStatus: "
-			    + String.valueOf(AddOppertunityService.this.pref
-				    .getInt("loginstatus", 0))
-			    + "\nuserKey: "
-			    + AddOppertunityService.this.pref.getString(
-				    "userKey", "")
-			    + "\nemailID: "
-			    + AddOppertunityService.this.pref.getString(
-				    "emailID", "")
-			    + "\nPassword: "
-			    + AddOppertunityService.this.pref.getString(
-				    "password", ""));
+			    + String.valueOf(pref.getInt("loginstatus", 0))
+			    + "\nuserKey: " + pref.getString("userKey", "")
+			    + "\nemailID: " + pref.getString("emailID", "")
+			    + "\nPassword: " + pref.getString("password", ""));
 
-	    params1.add(new BasicNameValuePair("userkey",
-		    AddOppertunityService.this.pref.getString("userKey", "")));
+	    params1.add(new BasicNameValuePair("userkey", pref.getString(
+		    "userKey", "")));
 	    params1.add(new BasicNameValuePair("select", "addOppertunities"));
 
-	    params1.add(new BasicNameValuePair("projectTitle",
-		    AddOppertunityService.this.dataSource.getProjectTitle()));
-	    params1.add(new BasicNameValuePair("projectDescription",
-		    AddOppertunityService.this.dataSource
-			    .getProjectDescription()));
-	    params1.add(new BasicNameValuePair("propertyType",
-		    AddOppertunityService.this.dataSource.getPropertyType()));
-	    params1.add(new BasicNameValuePair("moduleType",
-		    AddOppertunityService.this.dataSource.getModuleType()));
-	    params1.add(new BasicNameValuePair("compCode",
-		    AddOppertunityService.this.dataSource.getCompCode()));
-	    params1.add(new BasicNameValuePair("contactName",
-		    AddOppertunityService.this.dataSource.getContactName()));
-	    params1.add(new BasicNameValuePair("designation",
-		    AddOppertunityService.this.dataSource.getDesignation()));
-	    params1.add(new BasicNameValuePair("address1",
-		    AddOppertunityService.this.dataSource.getAddress1()));
-	    params1.add(new BasicNameValuePair("address2",
-		    AddOppertunityService.this.dataSource.getAddress2()));
-	    params1.add(new BasicNameValuePair("city",
-		    AddOppertunityService.this.dataSource.getCity()));
-	    params1.add(new BasicNameValuePair("county",
-		    AddOppertunityService.this.dataSource.getCounty()));
-	    params1.add(new BasicNameValuePair("country",
-		    AddOppertunityService.this.dataSource.getCountry()));
-	    params1.add(new BasicNameValuePair("postCode",
-		    AddOppertunityService.this.dataSource.getPostCode()));
-	    params1.add(new BasicNameValuePair("emailId",
-		    AddOppertunityService.this.dataSource.getEmailId()));
-	    params1.add(new BasicNameValuePair("dayPhone",
-		    AddOppertunityService.this.dataSource.getDayPhone()));
-	    params1.add(new BasicNameValuePair("eveningPhone",
-		    AddOppertunityService.this.dataSource.getEveningPhone()));
-	    params1.add(new BasicNameValuePair("other",
-		    AddOppertunityService.this.dataSource.getOther()));
-	    params1.add(new BasicNameValuePair("status",
-		    AddOppertunityService.this.dataSource.getStatus()));
-	    params1.add(new BasicNameValuePair("latitude",
-		    AddOppertunityService.this.dataSource.getLatitude()));
-	    params1.add(new BasicNameValuePair("longitute",
-		    AddOppertunityService.this.dataSource.getLongitute()));
+	    params1.add(new BasicNameValuePair("projectTitle", dataSource
+		    .getProjectTitle()));
+	    params1.add(new BasicNameValuePair("projectDescription", dataSource
+		    .getProjectDescription()));
+	    params1.add(new BasicNameValuePair("propertyType", dataSource
+		    .getPropertyType()));
+	    params1.add(new BasicNameValuePair("moduleType", dataSource
+		    .getModuleType()));
+	    params1.add(new BasicNameValuePair("compCode", dataSource
+		    .getCompCode()));
+	    params1.add(new BasicNameValuePair("contactName", dataSource
+		    .getContactName()));
+	    params1.add(new BasicNameValuePair("designation", dataSource
+		    .getDesignation()));
+	    params1.add(new BasicNameValuePair("address1", dataSource
+		    .getAddress1()));
+	    params1.add(new BasicNameValuePair("address2", dataSource
+		    .getAddress2()));
+	    params1.add(new BasicNameValuePair("city", dataSource.getCity()));
+	    params1.add(new BasicNameValuePair("county", dataSource.getCounty()));
+	    params1.add(new BasicNameValuePair("country", dataSource
+		    .getCountry()));
+	    params1.add(new BasicNameValuePair("postCode", dataSource
+		    .getPostCode()));
+	    params1.add(new BasicNameValuePair("emailId", dataSource
+		    .getEmailId()));
+	    params1.add(new BasicNameValuePair("dayPhone", dataSource
+		    .getDayPhone()));
+	    params1.add(new BasicNameValuePair("eveningPhone", dataSource
+		    .getEveningPhone()));
+	    params1.add(new BasicNameValuePair("other", dataSource.getOther()));
+	    params1.add(new BasicNameValuePair("status", dataSource.getStatus()));
+	    params1.add(new BasicNameValuePair("latitude", dataSource
+		    .getLatitude()));
+	    params1.add(new BasicNameValuePair("longitute", dataSource
+		    .getLongitute()));
 
 	    try {
 
 		HttpPost httpPost = null;
-		DefaultHttpClient httpClient = new DefaultHttpClient();
-		httpPost = new HttpPost(Constants.MYOPPERTUNITIES_URL);
+		final DefaultHttpClient httpClient = new DefaultHttpClient();
+		httpPost = new HttpPost(Constants.ADD_OPPERTUNITY_URL);
 		httpPost.setEntity(new UrlEncodedFormEntity(params1));
-		HttpResponse httpResponse = httpClient.execute(httpPost);
-		HttpEntity httpEntity = httpResponse.getEntity();
+		final HttpResponse httpResponse = httpClient.execute(httpPost);
+		final HttpEntity httpEntity = httpResponse.getEntity();
 		is = httpEntity.getContent();
 
-	    } catch (UnsupportedEncodingException e) {
+	    } catch (final UnsupportedEncodingException e) {
 		e.printStackTrace();
-	    } catch (ClientProtocolException e) {
+	    } catch (final ClientProtocolException e) {
 		e.printStackTrace();
-	    } catch (IOException e) {
+	    } catch (final IOException e) {
 		e.printStackTrace();
 	    }
 
 	    try {
-		BufferedReader reader = new BufferedReader(
+		final BufferedReader reader = new BufferedReader(
 			new InputStreamReader(is, "iso-8859-1"), 8);
-		StringBuilder sb = new StringBuilder();
+		final StringBuilder sb = new StringBuilder();
 		String line = null;
 		while ((line = reader.readLine()) != null) {
 		    sb.append(line);
@@ -126,7 +166,7 @@ public class AddOppertunityService {
 		is.close();
 		json = sb.toString();
 		Log.e("JSON", json);
-	    } catch (Exception e) {
+	    } catch (final Exception e) {
 		Log.e("Buffer Error", "Error converting result " + e.toString());
 	    }
 	    return json;
@@ -149,7 +189,7 @@ public class AddOppertunityService {
 				.parseInt(json_data.getString("status"));
 		}
 
-	    } catch (JSONException e) {
+	    } catch (final JSONException e) {
 		e.printStackTrace();
 	    }
 	    if (status == 200) {
@@ -158,31 +198,5 @@ public class AddOppertunityService {
 		Log.e("AddOpertunities error", Constants.WEB_SERVICE_ERROR);
 	    }
 	}
-    }
-
-    private SharedPreferences pref;
-    private static InputStream is = null;
-    private Context context;
-
-    private OppertunitiesDataSource dataSource = OppertunitiesDataSource
-	    .getOppertunitiesDataSource();
-
-    public AddOppertunityService(Context context) {
-	super();
-	this.context = context;
-    }
-
-    public void addOpperTunities() {
-	Log.e("Add Opppertunity Service", "add Oppertunities");
-	new MyOppertunitiwebservice().execute("addOppertunity");
-
-    }
-
-    public Context getContext() {
-	return this.context;
-    }
-
-    public void setContext(Context context) {
-	this.context = context;
     }
 }

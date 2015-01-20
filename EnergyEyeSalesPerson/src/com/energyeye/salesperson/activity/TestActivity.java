@@ -7,6 +7,8 @@ import com.energyeye.salesperson.R;
 import com.energyeye.salesperson.dbComponents.IDBHelper;
 import com.energyeye.salesperson.dbComponents.OppertunityHelper;
 import com.energyeye.salesperson.properties.OppertunitiesDataSource;
+import com.energyeye.salesperson.webservice.AddOppertunityService;
+import com.energyeye.salesperson.webservice.CustomerInformationService;
 import com.energyeye.salesperson.webservice.MyOppertunitiesService;
 import com.energyeye.salesperson.webservice.TaskService;
 
@@ -35,12 +37,12 @@ public class TestActivity extends Activity {
 	private Button insert,update,delete,select;
 	private OppertunitiesDataSource dataSource;
 	private EditText projectTitle,description,contact,designation,address1,address2,county,city;
-	private EditText compcode,postcode,dayphone,email,eveningphone,other;	
+	private EditText compcode,postcode,dayphone,email,eveningphone,other;
     private Spinner property_type,module_type,country;
 	private View v;
 	private List<String> propertyTypeList,moduleTypeList,countryList;
 	private ArrayAdapter<String> propertyTypeAdaptor,moduleTypeAdaptor,countryAdaptor;
-	private IDBHelper helper = new OppertunityHelper();
+	private final IDBHelper helper = new OppertunityHelper();
 	
 /*	@SuppressLint("InflateParams")
 	@Override
@@ -129,13 +131,21 @@ public class TestActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_test);
-		ActionBar actionBar = getActionBar();
-		actionBar.hide();
+		//final ActionBar actionBar = getActionBar();
+		//actionBar.hide();
 		
-	//	MyOppertunitiesService myService = new MyOppertunitiesService(this);
-	//	myService.getMyOpperTunities();
-		TaskService service = new TaskService(this);
-		service.getTask();
+		//final MyOppertunitiesService myService = new MyOppertunitiesService(this);
+		//myService.getMyOpperTunities();
+		//final TaskService service = new TaskService(this);
+		//service.getTask();
+		final AddOppertunityService addOppertunityService = new AddOppertunityService(this);
+		addOppertunityService.addOpperTunities();
+		
+		final CustomerInformationService informationService = new CustomerInformationService(this);
+		informationService.addCutomerInformation();
+		
+		
+		
 		//Intent intent = new Intent(this,SignatureActivity.class);
 		//startActivity(intent);
 	
@@ -206,7 +216,7 @@ public class TestActivity extends Activity {
 	
 	/*private void printOppertunityList(List<OppertunitiesDataSource> oppertunitylist) {
 		// TODO Auto-generated method stub
-		int count = oppertunitylist.size();	
+		int count = oppertunitylist.size();
 		 for(OppertunitiesDataSource oppertunities : oppertunitylist)
 		 {
 			 Log.e("Oppertunities " + String.valueOf(count--),oppertunities.toString());
@@ -254,7 +264,7 @@ public class TestActivity extends Activity {
 		// Handle action bar item clicks here. The action bar will
 		// automatically handle clicks on the Home/Up button, so long
 		// as you specify a parent activity in AndroidManifest.xml.
-		int id = item.getItemId();
+		final int id = item.getItemId();
 		if (id == R.id.action_settings) {
 			return true;
 		}
