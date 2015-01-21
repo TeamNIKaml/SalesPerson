@@ -28,7 +28,7 @@ public class RoiMethodDataSource {
         this.roiMethodList = roiMethodList;
     }
 
-    public static RoiMethodDataSource getPropertyTypeDataSource() {
+    public static RoiMethodDataSource getRoofTypeDataSource() {
 	if (dataSource == null)
 	    dataSource = new RoiMethodDataSource();
 	return dataSource;

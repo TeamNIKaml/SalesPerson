@@ -27,7 +27,7 @@ public class ProjectImplementationTypeDataSource {
 	ProjectImplementationList = projectImplementationList;
     }
 
-    public static ProjectImplementationTypeDataSource getPropertyTypeDataSource() {
+    public static ProjectImplementationTypeDataSource getProjectImplementationTypeDataSource() {
 	if (dataSource == null)
 	    dataSource = new ProjectImplementationTypeDataSource();
 	return dataSource;

@@ -16,17 +16,17 @@ public class DnoCompanyDataSource {
     private String[] projection;
     private String sortOrder;
     private static DnoCompanyDataSource dataSource;
-    private List<CountryDataSource> dnoCompanyList = new ArrayList<CountryDataSource>();
+    private List<DnoCompanyDataSource> dnoCompanyList = new ArrayList<DnoCompanyDataSource>();
 
-    public List<CountryDataSource> getDnoCompanyList() {
+    public List<DnoCompanyDataSource> getDnoCompanyList() {
 	return dnoCompanyList;
     }
 
-    public void setDnoCompanyList(List<CountryDataSource> dnoCompanyList) {
+    public void setDnoCompanyList(List<DnoCompanyDataSource> dnoCompanyList) {
 	this.dnoCompanyList = dnoCompanyList;
     }
 
-    public static DnoCompanyDataSource getPropertyTypeDataSource() {
+    public static DnoCompanyDataSource getDnoCompanyDataSource() {
 	if (dataSource == null)
 	    dataSource = new DnoCompanyDataSource();
 	return dataSource;

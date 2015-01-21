@@ -28,7 +28,7 @@ public class YieldMethodDataSource {
         this.yieldMethodList = yieldMethodList;
     }
 
-    public static YieldMethodDataSource getPropertyTypeDataSource() {
+    public static YieldMethodDataSource getYieldMethodDataSource() {
 	if (dataSource == null)
 	    dataSource = new YieldMethodDataSource();
 	return dataSource;

@@ -28,7 +28,7 @@ public class RoofTypeDataSource{
         this.roofTypeList = roofTypeList;
     }
 
-    public static RoofTypeDataSource getPropertyTypeDataSource() {
+    public static RoofTypeDataSource getRoofTypeDataSource() {
 	if (dataSource == null)
 	    dataSource = new RoofTypeDataSource();
 	return dataSource;
