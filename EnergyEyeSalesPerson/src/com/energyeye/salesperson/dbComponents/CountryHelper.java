@@ -9,15 +9,15 @@ import android.os.AsyncTask;
 import android.util.Log;
 
 import com.energyeye.salesperson.properties.Constants;
-import com.energyeye.salesperson.properties.OppertunitiesDataSource;
+import com.energyeye.salesperson.properties.CountryDataSource;
 
-public class OppertunityHelper implements IDBHelper {
+public class CountryHelper implements IDBHelper {
 
-    private final OppertunitiesDataSource dataSource = OppertunitiesDataSource
-	    .getOppertunitiesDataSource();
+    private final CountryDataSource dataSource = CountryDataSource
+	    .getCountryDataSource();
     private DBHelper dbHelper;
 
-    private final List<OppertunitiesDataSource> oppertunitieslist = new ArrayList<OppertunitiesDataSource>();
+    private final List<CountryDataSource> countryList = new ArrayList<CountryDataSource>();
 
     @Override
     public void delete(String where, String[] args) {
@@ -37,7 +37,7 @@ public class OppertunityHelper implements IDBHelper {
     @Override
     public boolean onCreate() {
 	dbHelper = new DBHelper(dataSource.getContext(), 1, Constants.DB_NAME,
-		Constants.OPPERTUNITIES_CREATE_QUERY);
+		Constants.COUNTRY_CREATE_QUERY);
 	return true;
 
     }
@@ -68,21 +68,21 @@ public class OppertunityHelper implements IDBHelper {
 	    if (operation[0].equalsIgnoreCase("insert")) {
 		onCreate();
 		final SQLiteDatabase database = dbHelper.getWritableDatabase();
-		database.insert(Constants.OPPERTUNITIES_TABLE_NAME, null,
-			dataSource.oppertuniiesToContentValues());
+		database.insert(Constants.COUNTRY_TABLE_NAME, null,
+			dataSource.countryToContentValues());
 
 	    } else if (operation[0].equalsIgnoreCase("update")) {
 
 		onCreate();
 		final SQLiteDatabase database = dbHelper.getWritableDatabase();
-		database.update(Constants.OPPERTUNITIES_TABLE_NAME,
-			dataSource.oppertuniiesToContentValues(),
+		database.update(Constants.COUNTRY_TABLE_NAME,
+			dataSource.countryToContentValues(),
 			dataSource.getWhereClause(), dataSource.getWhereArgs());
 
 	    } else if (operation[0].equalsIgnoreCase("delete")) {
 		onCreate();
 		final SQLiteDatabase dataBase = dbHelper.getWritableDatabase();
-		dataBase.delete(Constants.OPPERTUNITIES_TABLE_NAME,
+		dataBase.delete(Constants.COUNTRY_TABLE_NAME,
 			dataSource.getWhereClause(), dataSource.getWhereArgs());
 
 	    } else if (operation[0].equalsIgnoreCase("select")) {
@@ -90,7 +90,7 @@ public class OppertunityHelper implements IDBHelper {
 		onCreate();
 		final SQLiteDatabase database = dbHelper.getReadableDatabase();
 		final Cursor cursor = database.query(
-			Constants.OPPERTUNITIES_TABLE_NAME,
+			Constants.COUNTRY_TABLE_NAME,
 			dataSource.getProjection(),
 			dataSource.getWhereClause(), dataSource.getWhereArgs(),
 			null, null, dataSource.getSortOrder());
@@ -99,13 +99,13 @@ public class OppertunityHelper implements IDBHelper {
 		if (cursor.moveToFirst()) {
 
 		    do {
-			oppertunitieslist.add(dataSource
-				.cursorToOppertunitiesDataSource(cursor));
+			countryList.add(dataSource
+				.cursorToCountry(cursor));
 		    } while (cursor.moveToNext());
 
 		}
 
-		dataSource.setOppertunitieslist(oppertunitieslist);
+		dataSource.setCountryList(countryList);
 
 	    }
 

@@ -18,15 +18,15 @@ public class CountryDataSource {
     private static CountryDataSource dataSource;
     private List<CountryDataSource> countryList = new ArrayList<CountryDataSource>();
 
-    public List<CountryDataSource> getCountryTypeList() {
+    public List<CountryDataSource> getCountryList() {
 	return countryList;
     }
 
-    public void setCountryTypeList(List<CountryDataSource> countryList) {
+    public void setCountryList(List<CountryDataSource> countryList) {
 	this.countryList = countryList;
     }
 
-    public static CountryDataSource getPropertyTypeDataSource() {
+    public static CountryDataSource getCountryDataSource() {
 	if (dataSource == null)
 	    dataSource = new CountryDataSource();
 	return dataSource;
