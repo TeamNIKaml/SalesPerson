@@ -18,7 +18,7 @@ public class ModuleTypeDataSource {
     private static ModuleTypeDataSource dataSource;
     private List<ModuleTypeDataSource> moduleTypeList = new ArrayList<ModuleTypeDataSource>();
 
-    public static ModuleTypeDataSource getPropertyTypeDataSource() {
+    public static ModuleTypeDataSource getModuleTypeDataSource() {
 	if (dataSource == null)
 	    dataSource = new ModuleTypeDataSource();
 	return dataSource;
