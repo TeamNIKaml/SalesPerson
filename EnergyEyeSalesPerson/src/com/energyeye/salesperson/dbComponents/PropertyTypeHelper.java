@@ -9,15 +9,15 @@ import android.os.AsyncTask;
 import android.util.Log;
 
 import com.energyeye.salesperson.properties.Constants;
-import com.energyeye.salesperson.properties.OppertunitiesDataSource;
+import com.energyeye.salesperson.properties.PropertyTypeDataSource;
 
-public class OppertunityHelper implements IDBHelper {
+public class PropertyTypeHelper implements IDBHelper {
 
-    private final OppertunitiesDataSource dataSource = OppertunitiesDataSource
-	    .getOppertunitiesDataSource();
+    private final PropertyTypeDataSource dataSource = PropertyTypeDataSource
+	    .getPropertyTypeDataSource();
     private DBHelper dbHelper;
 
-    private final List<OppertunitiesDataSource> oppertunitieslist = new ArrayList<OppertunitiesDataSource>();
+    private final List<PropertyTypeDataSource> propertyList = new ArrayList<PropertyTypeDataSource>();
 
     @Override
     public void delete(String where, String[] args) {
@@ -38,7 +38,7 @@ public class OppertunityHelper implements IDBHelper {
     @Override
     public boolean onCreate() {
 	dbHelper = new DBHelper(dataSource.getContext(), 1, Constants.DB_NAME,
-		Constants.OPPERTUNITIES_CREATE_QUERY);
+		Constants.PROPERTY_TYPE_CREATE_QUERY);
 	return true;
 
     }
@@ -69,21 +69,21 @@ public class OppertunityHelper implements IDBHelper {
 	    if (operation[0].equalsIgnoreCase("insert")) {
 		onCreate();
 		final SQLiteDatabase database = dbHelper.getWritableDatabase();
-		database.insert(Constants.OPPERTUNITIES_TABLE_NAME, null,
-			dataSource.oppertuniiesToContentValues());
+		database.insert(Constants.PROPERTY_TYPE_TABLE_NAME, null,
+			dataSource.propertyTypeToContentValues());
 
 	    } else if (operation[0].equalsIgnoreCase("update")) {
 
 		onCreate();
 		final SQLiteDatabase database = dbHelper.getWritableDatabase();
-		database.update(Constants.OPPERTUNITIES_TABLE_NAME,
-			dataSource.oppertuniiesToContentValues(),
+		database.update(Constants.PROPERTY_TYPE_TABLE_NAME,
+			dataSource.propertyTypeToContentValues(),
 			dataSource.getWhereClause(), dataSource.getWhereArgs());
 
 	    } else if (operation[0].equalsIgnoreCase("delete")) {
 		onCreate();
 		final SQLiteDatabase dataBase = dbHelper.getWritableDatabase();
-		dataBase.delete(Constants.OPPERTUNITIES_TABLE_NAME,
+		dataBase.delete(Constants.PROPERTY_TYPE_TABLE_NAME,
 			dataSource.getWhereClause(), dataSource.getWhereArgs());
 
 	    } else if (operation[0].equalsIgnoreCase("select")) {
@@ -91,7 +91,7 @@ public class OppertunityHelper implements IDBHelper {
 		onCreate();
 		final SQLiteDatabase database = dbHelper.getReadableDatabase();
 		final Cursor cursor = database.query(
-			Constants.OPPERTUNITIES_TABLE_NAME,
+			Constants.PROPERTY_TYPE_TABLE_NAME,
 			dataSource.getProjection(),
 			dataSource.getWhereClause(), dataSource.getWhereArgs(),
 			null, null, dataSource.getSortOrder());
@@ -100,13 +100,13 @@ public class OppertunityHelper implements IDBHelper {
 		if (cursor.moveToFirst()) {
 
 		    do {
-			oppertunitieslist.add(dataSource
-				.cursorToOppertunitiesDataSource(cursor));
+			propertyList.add(dataSource
+				.cursorToPropertyType(cursor));
 		    } while (cursor.moveToNext());
 
 		}
 
-		dataSource.setOppertunitieslist(oppertunitieslist);
+		dataSource.setPropertyTypeList(propertyList);
 
 	    }
 
