@@ -27,7 +27,7 @@ public class ElectricalCompanyDataSource {
 	this.electricalCompanyList = electricalCompanyList;
     }
 
-    public static ElectricalCompanyDataSource getPropertyTypeDataSource() {
+    public static ElectricalCompanyDataSource getElectricalCompanyDataSource() {
 	if (dataSource == null)
 	    dataSource = new ElectricalCompanyDataSource();
 	return dataSource;
