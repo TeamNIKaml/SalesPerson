@@ -132,6 +132,17 @@ public class Constants {
 	    + Constants.ROI_METHOD_TABLE_NAME
 	    + " ("
 	    + "_id INTEGER PRIMARY KEY AUTOINCREMENT  NOT NULL," + "name TEXT)";
+    
+    
+    
+    /* ROI_METHOD_TABLE_NAME */
+
+    public static final String HOLYDAY_lIST_TABLE_NAME = "holidayList";
+    public static final String HOLYDAY_lIST_CREATE_QUERY = "CREATE TABLE IF NOT EXISTS "
+	    + Constants.HOLYDAY_lIST_TABLE_NAME
+	    + " ("
+	    + "_id INTEGER PRIMARY KEY AUTOINCREMENT  NOT NULL," + "name TEXT)";
+    
 
     /* PRIVATE CONSTRUCTOR */
 
