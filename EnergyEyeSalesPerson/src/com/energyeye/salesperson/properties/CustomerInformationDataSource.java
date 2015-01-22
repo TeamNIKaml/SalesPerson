@@ -42,6 +42,8 @@ public class CustomerInformationDataSource {
 
     }
 
+   
+
     public Context getContext() {
 	return context;
     }
@@ -186,6 +188,28 @@ public class CustomerInformationDataSource {
 	    List<CustomerInformationDataSource> customerInformationList) {
 	this.customerInformationList = customerInformationList;
     }
+    
+    
+    
+    @Override
+    public String toString() {
+	// TODO Auto-generated method stub
+	return "mpan"+ getMpan()+
+		"supplier"+ getSupplier()+
+		"dnoCompany"+ getDnoCompany()+
+		"electricityRate"+ getElectricityRate()+
+		"roiMethod"+ getRoiMethod()+
+		"monitorInstallation"+ getMonitorInstallation()+
+		"showCustomerContribution"+ getShowCustomerContribution()+
+		"roofType"+ getRoofType()+
+		"meterReadinfForFit"+ getMeterReadinfForFit()+
+		"yieldMethod"+ getYieldMethod()+
+		"ProjectImplementationtype"+ getProjectImplementationtype()+
+		"other"+ getOther();
+    }
+    
+    
+    
 
     public CustomerInformationDataSource cursorToCustomerInformationList(
 	    Cursor cursor) {
