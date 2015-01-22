@@ -16,7 +16,11 @@ public class HolydayListDataSource {
     private String[] projection;
     private String sortOrder;
     private static HolydayListDataSource dataSource;
-    private final List<HolydayListDataSource> holydayList = new ArrayList<HolydayListDataSource>();
+    private List<HolydayListDataSource> holydayList = new ArrayList<HolydayListDataSource>();
+
+   
+
+
 
     public List<HolydayListDataSource> getHolydayList() {
         return holydayList;
@@ -24,7 +28,13 @@ public class HolydayListDataSource {
 
 
 
-    public static HolydayListDataSource getModuleTypeDataSource() {
+    public void setHolydayList(List<HolydayListDataSource> holydayList) {
+        this.holydayList = holydayList;
+    }
+
+
+
+    public static HolydayListDataSource getHolydayListDataSource() {
 	if (dataSource == null)
 	    dataSource = new HolydayListDataSource();
 	return dataSource;
@@ -80,7 +90,7 @@ public class HolydayListDataSource {
 	this.sortOrder = sortOrder;
     }
 
-    public ContentValues moduleTypeToContentValues() {
+    public ContentValues holidayToContentValues() {
 
 	final ContentValues values = new ContentValues();
 	values.put("name", getName());
@@ -88,12 +98,12 @@ public class HolydayListDataSource {
 	return values;
     }
 
-    public ModuleTypeDataSource cursorToModuleType(Cursor cursor) {
-	final ModuleTypeDataSource moduleTypeDataSource = new ModuleTypeDataSource();
+    public HolydayListDataSource cursorToHoliday(Cursor cursor) {
+	final HolydayListDataSource holydayListDataSource = new HolydayListDataSource();
 
-	moduleTypeDataSource.setName(cursor.getString(1));
+	holydayListDataSource.setName(cursor.getString(1));
 
-	return moduleTypeDataSource;
+	return holydayListDataSource;
 
     }
 
