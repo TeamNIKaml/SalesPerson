@@ -25,7 +25,7 @@ import android.util.Log;
 
 import com.energyeye.salesperson.properties.Constants;
 
-public class MyLeave {
+public class ApplyLeaveWebService {
 
     private SharedPreferences pref;
     private static InputStream is = null;
@@ -39,18 +39,18 @@ public class MyLeave {
 	this.context = context;
     }
 
-    public MyLeave(Context context) {
+    public ApplyLeaveWebService(Context context) {
 	super();
 	this.context = context;
     }
 
     public void getHolidayList() {
 	Log.e("Task Service", "ndfsdf");
-	new MyLeaveWebService().execute("attendence");
+	new ApplyLeaveService().execute("attendence");
 
     }
 
-    private class MyLeaveWebService extends AsyncTask<String, Integer, String> {
+    private class ApplyLeaveService extends AsyncTask<String, Integer, String> {
 
 	@Override
 	protected void onPostExecute(String result) {
@@ -95,6 +95,8 @@ public class MyLeave {
 	    params1.add(new BasicNameValuePair("userkey", pref.getString(
 		    "userKey", "")));
 	    params1.add(new BasicNameValuePair("select", "MyAttendence"));
+	    params1.add(new BasicNameValuePair("fromDate", "FromDate"));
+	    params1.add(new BasicNameValuePair("toDate", "ToDate"));
 
 	    try {
 
