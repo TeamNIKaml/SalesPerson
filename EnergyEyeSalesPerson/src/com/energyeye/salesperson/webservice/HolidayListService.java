@@ -46,11 +46,11 @@ public class HolidayListService {
 
 	public void getHolidayList() {
 		Log.e("Task Service", "ndfsdf");
-		new TaskWebService().execute("Holiday");
+		new HolidayWebService().execute("Holiday");
 
 	}
 
-	private class TaskWebService extends AsyncTask<String, Integer, String> {
+	private class HolidayWebService extends AsyncTask<String, Integer, String> {
 
 		@Override
 		protected void onPostExecute(String result) {
