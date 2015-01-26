@@ -10,6 +10,7 @@ import android.test.suitebuilder.annotation.SmallTest;
 
 import com.energyeye.salesperson.dbComponents.DBHelper;
 import com.energyeye.salesperson.properties.Constants;
+import com.energyeye.salesperson.properties.CountryDataSource;
 import com.energyeye.salesperson.properties.ProjectImplementationTypeDataSource;
 
 public class CountryUnitTest extends AndroidTestCase {
@@ -17,8 +18,8 @@ public class CountryUnitTest extends AndroidTestCase {
     private static final String TEST_FILE_PREFIX = "test_";
     private DBHelper helper;
     private SQLiteDatabase db;
-    private ProjectImplementationTypeDataSource dataSource = ProjectImplementationTypeDataSource
-	    .getProjectImplementationTypeDataSource();
+    private CountryDataSource dataSource = CountryDataSource
+	    .getCountryDataSource();
 
     @Override
     protected void setUp() throws Exception {
@@ -28,7 +29,7 @@ public class CountryUnitTest extends AndroidTestCase {
 		getContext(), TEST_FILE_PREFIX);
 
 	helper = new DBHelper(context, 1, Constants.DB_NAME,
-		Constants.PROJECT_IMPLEMENTATION_CREATE_QUERY);
+		Constants.COUNTRY_CREATE_QUERY);
 
 	assertNotNull(helper);
 
@@ -52,15 +53,15 @@ public class CountryUnitTest extends AndroidTestCase {
 	System.out.println("################### insert samll #########################");
 	db = helper.getWritableDatabase();
 	 dataSource.setName("Nikhil");
-	    db.insert(Constants.PROJECT_IMPLEMENTATION_TABLE_NAME, null,
-		    dataSource.projectImplementationToContentValues());
+	    db.insert(Constants.COUNTRY_TABLE_NAME, null,
+		    dataSource.countryToContentValues());
 	  db.close();
     }
     
     private void selectAllSmall()
     {
 	  db = helper.getReadableDatabase();
-			Cursor c = db.query(Constants.PROJECT_IMPLEMENTATION_TABLE_NAME, null,
+			Cursor c = db.query(Constants.COUNTRY_TABLE_NAME, null,
 				null, null, null, null, null);
 			 System.out.println("################### Small selctall count"+c.getCount());
 			db.close();
@@ -71,7 +72,7 @@ public class CountryUnitTest extends AndroidTestCase {
     {
 	System.out.println("################### delete small ######################");
 	db = helper.getWritableDatabase();
-	db.delete(Constants.PROJECT_IMPLEMENTATION_TABLE_NAME, null, null);
+	db.delete(Constants.COUNTRY_TABLE_NAME, null, null);
 	db.close();
     }
     
@@ -80,8 +81,8 @@ public class CountryUnitTest extends AndroidTestCase {
 	db = helper.getWritableDatabase();
 	System.out.println("################## update small ######################");
 	dataSource.setName("Nikhil V");
-	db.update(Constants.PROJECT_IMPLEMENTATION_TABLE_NAME,
-		dataSource.projectImplementationToContentValues(), "_id = ?",
+	db.update(Constants.COUNTRY_TABLE_NAME,
+		dataSource.countryToContentValues(), "_id = ?",
 		new String[] { "1" });
 
 	db.close();
@@ -115,8 +116,8 @@ public class CountryUnitTest extends AndroidTestCase {
 	db = helper.getWritableDatabase();
 	for (int i = 0; i < 10; i++) {
 	    dataSource.setName("Nikhil" + String.valueOf(i));
-	    db.insert(Constants.PROJECT_IMPLEMENTATION_TABLE_NAME, null,
-		    dataSource.projectImplementationToContentValues());
+	    db.insert(Constants.COUNTRY_TABLE_NAME, null,
+		    dataSource.countryToContentValues());
 	}
 
 	db.close();
@@ -127,7 +128,7 @@ public class CountryUnitTest extends AndroidTestCase {
     public void MediumSelectAll() {
 	
 	db = helper.getReadableDatabase();
-	Cursor c = db.query(Constants.PROJECT_IMPLEMENTATION_TABLE_NAME, null,
+	Cursor c = db.query(Constants.COUNTRY_TABLE_NAME, null,
 		null, null, null, null, null);
 	System.out.println("##########selectAll Medium count"+c.getCount());
 	db.close();
@@ -142,8 +143,8 @@ public class CountryUnitTest extends AndroidTestCase {
 	
 	for (int i = 0; i < 10; i++) {
 	    dataSource.setName("Nikhil V " + String.valueOf(i));
-	    db.update(Constants.PROJECT_IMPLEMENTATION_TABLE_NAME,
-			dataSource.projectImplementationToContentValues(), "_id = ?",
+	    db.update(Constants.COUNTRY_TABLE_NAME,
+			dataSource.countryToContentValues(), "_id = ?",
 			new String[] { String.valueOf(i) });
 	}
 	
@@ -157,7 +158,7 @@ public class CountryUnitTest extends AndroidTestCase {
     public void MediumSelectOne()  {
 
 	db = helper.getReadableDatabase();
-	Cursor c = db.query(Constants.PROJECT_IMPLEMENTATION_TABLE_NAME, null,
+	Cursor c = db.query(Constants.COUNTRY_TABLE_NAME, null,
 		"_id = ?", new String[] { "7" }, null, null, null);
 	c.moveToFirst();
 	System.out.println("############# Select one"+c.getString(1));
@@ -170,7 +171,7 @@ public class CountryUnitTest extends AndroidTestCase {
 	
 	System.out.println("#################### Medium Delete one ##################");
 	db = helper.getWritableDatabase();
-	db.delete(Constants.PROJECT_IMPLEMENTATION_TABLE_NAME, "_id = ?", new String[] { "7" });
+	db.delete(Constants.COUNTRY_TABLE_NAME, "_id = ?", new String[] { "7" });
 	db.close();
 	
     }
@@ -182,7 +183,7 @@ public class CountryUnitTest extends AndroidTestCase {
 	
 	System.out.println("################### Medium delete all ###################");
 	db = helper.getWritableDatabase();
-	db.delete(Constants.PROJECT_IMPLEMENTATION_TABLE_NAME, null, null);
+	db.delete(Constants.COUNTRY_TABLE_NAME, null, null);
 	db.close();
 	
     }
@@ -211,8 +212,8 @@ public class CountryUnitTest extends AndroidTestCase {
 	db = helper.getWritableDatabase();
 	for (int i = 0; i < 100; i++) {
 	    dataSource.setName("Nikhil" + String.valueOf(i));
-	    db.insert(Constants.PROJECT_IMPLEMENTATION_TABLE_NAME, null,
-		    dataSource.projectImplementationToContentValues());
+	    db.insert(Constants.COUNTRY_TABLE_NAME, null,
+		    dataSource.countryToContentValues());
 	}
 
 	db.close();
@@ -224,7 +225,7 @@ public class CountryUnitTest extends AndroidTestCase {
     public void LargeSelectAll()  {
 
 	db = helper.getReadableDatabase();
-	Cursor c = db.query(Constants.PROJECT_IMPLEMENTATION_TABLE_NAME, null,
+	Cursor c = db.query(Constants.COUNTRY_TABLE_NAME, null,
 		null, null, null, null, null);
 	System.out.println("############### Select All Large ########################"+c.getCount());
 	db.close();
@@ -239,8 +240,8 @@ public class CountryUnitTest extends AndroidTestCase {
 	
 	for (int i = 0; i < 100; i++) {
 	    dataSource.setName("Nikhil V " + String.valueOf(i));
-	    db.update(Constants.PROJECT_IMPLEMENTATION_TABLE_NAME,
-			dataSource.projectImplementationToContentValues(), "_id = ?",
+	    db.update(Constants.COUNTRY_TABLE_NAME,
+			dataSource.countryToContentValues(), "_id = ?",
 			new String[] { String.valueOf(i)});
 	}
 	
@@ -254,7 +255,7 @@ public class CountryUnitTest extends AndroidTestCase {
     public void LargeSelectOne()  {
 
 	db = helper.getReadableDatabase();
-	Cursor c = db.query(Constants.PROJECT_IMPLEMENTATION_TABLE_NAME, null,
+	Cursor c = db.query(Constants.COUNTRY_TABLE_NAME, null,
 		"_id = ?", new String[] { "77" }, null, null, null);
 	if(c.moveToFirst())
 	System.out.println("#######################Large Select one ######"+c.getString(1));
@@ -266,7 +267,7 @@ public class CountryUnitTest extends AndroidTestCase {
     public void LargeDeleteOne()  {
 	System.out.println("#############Delete one #################");
 	db = helper.getWritableDatabase();
-	db.delete(Constants.PROJECT_IMPLEMENTATION_TABLE_NAME, "_id = ?", new String[] { "34" });
+	db.delete(Constants.COUNTRY_TABLE_NAME, "_id = ?", new String[] { "34" });
 	db.close();
 	
     }
@@ -277,7 +278,7 @@ public class CountryUnitTest extends AndroidTestCase {
     public void LargeDeleteAll() {
 	System.out.println("############Delete all #############");
 	db = helper.getWritableDatabase();
-	db.delete(Constants.PROJECT_IMPLEMENTATION_TABLE_NAME, null, null);
+	db.delete(Constants.COUNTRY_TABLE_NAME, null, null);
 	db.close();
 	
     }
