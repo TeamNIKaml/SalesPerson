@@ -73,6 +73,7 @@ public class CustomerInformationHelper implements IDBHelper {
 		database.insert(Constants.CUSTOMER_INFOEMATION_TABLE_NAME,
 			null,
 			dataSource.customerInformationListToContentValue());
+		
 
 	    } else if (operation[0].equalsIgnoreCase("update")) {
 
@@ -81,12 +82,14 @@ public class CustomerInformationHelper implements IDBHelper {
 		database.update(Constants.CUSTOMER_INFOEMATION_TABLE_NAME,
 			dataSource.customerInformationListToContentValue(),
 			dataSource.getWhereClause(), dataSource.getWhereArgs());
+		
 
 	    } else if (operation[0].equalsIgnoreCase("delete")) {
 		onCreate();
 		final SQLiteDatabase dataBase = dbHelper.getWritableDatabase();
 		dataBase.delete(Constants.CUSTOMER_INFOEMATION_TABLE_NAME,
 			dataSource.getWhereClause(), dataSource.getWhereArgs());
+		
 
 	    } else if (operation[0].equalsIgnoreCase("select")) {
 
@@ -115,6 +118,7 @@ public class CustomerInformationHelper implements IDBHelper {
 	    else {
 		Log.e("Invalid db task", "invalid dsfsdfasdas");
 	    }
+	    dbHelper.close();
 
 	    return null;
 	}

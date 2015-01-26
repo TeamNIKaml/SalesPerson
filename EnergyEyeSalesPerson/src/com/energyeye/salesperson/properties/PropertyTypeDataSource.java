@@ -9,6 +9,12 @@ import android.database.Cursor;
 
 public class PropertyTypeDataSource {
 
+    @Override
+    public String toString() {
+	// TODO Auto-generated method stub
+	return "name :"+getName();
+    }
+
     private String name;
     private Context context;
     private String whereClause;

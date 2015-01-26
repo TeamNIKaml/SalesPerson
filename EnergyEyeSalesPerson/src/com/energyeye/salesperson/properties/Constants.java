@@ -71,7 +71,7 @@ public class Constants {
 
     /* PROPERTY_TYPE_TABLE_NAME */
 
-    public static final String PROPERTY_TYPE_TABLE_NAME = "propertyType";
+    public static final String PROPERTY_TYPE_TABLE_NAME = "property";
     public static final String PROPERTY_TYPE_CREATE_QUERY = "CREATE TABLE IF NOT EXISTS "
 	    + Constants.PROPERTY_TYPE_TABLE_NAME
 	    + " ("

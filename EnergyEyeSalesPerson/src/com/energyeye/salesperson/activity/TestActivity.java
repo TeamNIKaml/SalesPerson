@@ -7,8 +7,10 @@ import com.energyeye.salesperson.R;
 import com.energyeye.salesperson.dbComponents.CustomerInformationHelper;
 import com.energyeye.salesperson.dbComponents.IDBHelper;
 import com.energyeye.salesperson.dbComponents.OppertunityHelper;
+import com.energyeye.salesperson.dbComponents.PropertyTypeHelper;
 import com.energyeye.salesperson.properties.CustomerInformationDataSource;
 import com.energyeye.salesperson.properties.OppertunitiesDataSource;
+import com.energyeye.salesperson.properties.PropertyTypeDataSource;
 import com.energyeye.salesperson.webservice.AddOppertunityService;
 import com.energyeye.salesperson.webservice.CustomerInformationService;
 import com.energyeye.salesperson.webservice.MyOppertunitiesService;
@@ -45,8 +47,9 @@ public class TestActivity extends Activity {
     private List<String> propertyTypeList, moduleTypeList, countryList;
     private ArrayAdapter<String> propertyTypeAdaptor, moduleTypeAdaptor,
 	    countryAdaptor;
-     private final IDBHelper helper = new CustomerInformationHelper();
-     private CustomerInformationDataSource dataSource;
+     private final IDBHelper helper = new PropertyTypeHelper();
+     private final  PropertyTypeDataSource dataSource = PropertyTypeDataSource.
+	     		getPropertyTypeDataSource();
 
   
   /*  @Override
@@ -164,31 +167,41 @@ public class TestActivity extends Activity {
 	 
 	  @Override public void onClick(View arg0) {
 	      // TODO Auto-generated method stub
-	      
-	      setCustInfo();
+	      dataSource.setContext(getApplicationContext());
+	      setPropertyType();
+	     // setCustInfo();
 	      helper.insert();
 	 
 	 }
 
+	
+
 	 });
 	 
 	 update.setOnClickListener(new OnClickListener() {
+	     
 	  
-	  @Override public void onClick(View arg0) { // TODO Auto-generated  method stub
+	  @Override public void onClick(View arg0) {
+	      dataSource.setContext(getApplicationContext());// TODO Auto-generated  method stub
 	      final String where ="_id = ?"; final String args[] =new
 	  String[1]; args[0] = "1";
 	 // dataSource.setProjectTitle("EnergyEye");
-	  helper.update(where, args);
+	//dataSource.setMpan("MPan updated");
+
+	  helper.update(null, null);
 	  
 	  
 	  } });
 	 
 	 delete.setOnClickListener(new OnClickListener() {
+	     
 	  
-	  @Override public void onClick(View arg0) { // TODO Auto-generated  method stub
+	  @Override public void onClick(View arg0) {
+	      dataSource.setContext(getApplicationContext());
+	      
 	      final String where ="_id = ?"; final String args[] =new
 			  String[1]; args[0] = "1";
-	  helper.delete(where, args);
+	  helper.delete(null, null);
 	  
 	  } });
 	  
@@ -198,14 +211,19 @@ public class TestActivity extends Activity {
 	  
 	  @Override public void onClick(View arg0) {
 	      // TODO Auto-generated	  method stub
-	  
-	  final List<CustomerInformationDataSource> customerInfoList =
-	  dataSource.getCustomerInformationList() ;
+	      dataSource.setContext(getApplicationContext());
+	  final List<PropertyTypeDataSource> propertyList;
+	 
 	  helper.select(null, null, null,null);
-	  printCustomerInfo(customerInfoList);
+	//  dataSource.getCustomerInformationList() ;
+	  propertyList =dataSource.getPropertyTypeList();
+	 // printCustomerInfo(customerInfoList);
+	  printPropertytypeList(propertyList);
 	  
 	  
 	  }
+
+	
 
 	
 	  
@@ -216,7 +234,23 @@ public class TestActivity extends Activity {
     }
     
     
-    private void setCustInfo() {
+    
+    private void setPropertyType() {
+	    // TODO Auto-generated method stub
+	    dataSource.setName("Name");
+	}
+    
+    private void printPropertytypeList(
+		List<PropertyTypeDataSource> propertyList) {
+	    // TODO Auto-generated method stub
+	int count =   propertyList.size();
+	for(final PropertyTypeDataSource cDataSource :      propertyList)
+	System.out.println("custinfolist"+String.valueOf(count--)+cDataSource);
+	    
+	}
+    
+    
+  /*  private void setCustInfo() {
 	    // TODO Auto-generated method stub
 	
 	dataSource.setMpan("MPan");
@@ -232,10 +266,10 @@ public class TestActivity extends Activity {
 	dataSource.setProjectImplementationtype("ProjectImplementationType");
 	dataSource.setOther("Other");
 	    
-	}
+	}*/
     
     
-    private void printCustomerInfo(
+   /* private void printCustomerInfo(
 		List<CustomerInformationDataSource> customerInfoList) {
 	    // TODO Auto-generated method stub
 	
@@ -244,7 +278,7 @@ public class TestActivity extends Activity {
 	for(final CustomerInformationDataSource cDataSource :      customerInfoList)
 	System.out.println("custinfolist"+String.valueOf(count--)+cDataSource);
 	    
-	}
+	}*/
 
     /*
       private void printOppertunityList(List<OppertunitiesDataSource>

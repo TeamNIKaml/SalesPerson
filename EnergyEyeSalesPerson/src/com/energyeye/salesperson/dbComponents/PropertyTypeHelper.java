@@ -113,6 +113,8 @@ public class PropertyTypeHelper implements IDBHelper {
 	    else {
 		Log.e("Invalid db task", "invalid dsfsdfasdas");
 	    }
+	    
+	    dbHelper.close();
 
 	    return null;
 	}
